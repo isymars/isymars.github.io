@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anniq.dev | Anniq Darwisy Portfolio</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%2305070f%27/%3E%3Ctext x=%2732%27 y=%2744%27 font-family=%27Arial%27 font-weight=%27800%27 font-size=%2732%27 text-anchor=%27middle%27 fill=%27%2360a5fa%27%3EA.%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#05070f;--card:rgba(17,22,38,.6);--line:rgba(255,255,255,.08);--text:#eef1f8;--muted:#8b93a7;--blue:#3b82f6;--blue2:#60a5fa;--sky:#93c5fd}
+body.light{--bg:#eef2fa;--card:rgba(255,255,255,.75);--line:rgba(10,20,50,.1);--text:#0d1325;--muted:#5b647a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;transition:background .4s,color .4s}
+a{color:inherit;text-decoration:none}
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse at 20% 10%,rgba(59,130,246,.18),transparent 50%),radial-gradient(ellipse at 85% 80%,rgba(99,102,241,.14),transparent 50%)}
+body.light::before{opacity:.5}
+section,footer{position:relative;z-index:1}
+
+/* NAV */
+nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:4px;padding:6px;
+  background:rgba(15,19,33,.7);border:1px solid var(--line);border-radius:40px;backdrop-filter:blur(14px)}
+body.light nav{background:rgba(255,255,255,.75)}
+nav a{padding:8px 18px;border-radius:30px;font-size:.85rem;font-weight:500;color:var(--muted);transition:.25s}
+nav a:hover{color:var(--text)}
+nav a.on{background:rgba(255,255,255,.1);color:var(--text)}
+body.light nav a.on{background:rgba(10,20,50,.08)}
+nav button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer;margin-left:4px;font-size:.9rem}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;max-width:1200px;margin:auto;padding:100px 6vw 40px;gap:20px}
+.avail{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:30px;border:1px solid rgba(74,222,128,.35);background:rgba(74,222,128,.08);color:#86efac;font-size:.78rem;font-weight:600;margin-bottom:18px}
+.avail span{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80;animation:bl 1.6s ease-in-out infinite}
+body.light .avail{color:#15803d}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:800;line-height:1.05;letter-spacing:-1.5px}
+.hero h1 .g{background:linear-gradient(90deg,#3b82f6,#60a5fa,#a5b4fc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.typed{color:var(--sky);font-weight:600;margin:18px 0 18px;min-height:1.5em;font-size:1.05rem}
+body.light .typed{color:var(--blue)}
+.typed i{display:inline-block;width:2px;height:1.1em;background:currentColor;vertical-align:-3px;margin-left:2px;animation:bl 1s step-end infinite}
+@keyframes bl{50%{opacity:0}}
+.hero p.lead{color:#b6bdcc;line-height:1.75;max-width:540px;font-size:.97rem}
+.hero p.lead b{color:var(--text);font-weight:600}
+body.light .hero p.lead{color:var(--muted)}
+.cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:10px;font-weight:600;font-size:.9rem;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text);font-family:inherit;transition:.25s}
+.btn.pri{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 8px 30px rgba(59,130,246,.35)}
+.btn.pri:hover{background:#2f6fe0;transform:translateY(-2px)}
+.btn:not(.pri):hover{border-color:var(--blue2)}
+.findme{display:flex;align-items:center;gap:14px;margin-top:34px;font-size:.68rem;letter-spacing:2px;color:var(--muted)}
+.findme a{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:.25s}
+.findme a:hover{border-color:var(--blue2);transform:translateY(-2px)}
+.findme svg{width:15px;height:15px;fill:var(--text)}
+
+/* LANYARD */
+.lan{position:relative;height:640px;margin-top:-100px}
+#rope{position:absolute;inset:0;width:100%;height:100%}
+.idcard{position:absolute;left:0;top:0;width:230px;height:330px;cursor:grab;touch-action:none;user-select:none;perspective:900px;will-change:transform}
+.idcard.drag{cursor:grabbing}
+.flip{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,1.3,.5,1)}
+.flip.back{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;overflow:hidden;border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 30px 60px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.3)}
+.face.f{background:linear-gradient(160deg,#e9ecf2,#c9d0dc)}
+.face.b{transform:rotateY(180deg);background:linear-gradient(160deg,#0f172a,#1e293b);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center}
+.hole{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:44px;height:9px;border-radius:6px;background:#0b0f1c;box-shadow:inset 0 2px 3px rgba(0,0,0,.6);z-index:3}
+.idtop{position:absolute;top:26px;left:0;right:0;white-space:nowrap;overflow:hidden;text-align:center;font-family:'Bebas Neue';font-size:2.4rem;letter-spacing:2px;color:#0b1220;line-height:1;z-index:2}
+.idside{position:absolute;right:-30px;top:150px;transform:rotate(90deg);font-family:'Bebas Neue';font-size:.85rem;white-space:nowrap;letter-spacing:3px;color:#0b1220;opacity:.85}
+.idphoto{position:absolute;left:16px;right:16px;top:66px;height:180px;border-radius:8px;overflow:hidden;background:#9aa6bb}
+.idphoto img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(1) contrast(1.15) brightness(1.02)}
+.idphoto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(11,18,32,.75))}
+.idname{position:absolute;left:24px;right:24px;top:220px;color:#fff;font-weight:800;font-size:.72rem;letter-spacing:.5px;z-index:2}
+.idname small{display:block;font-weight:500;opacity:.8;font-size:.56rem}
+.idbot{position:absolute;bottom:14px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:flex-end}
+.idbot b{font-family:'Bebas Neue';font-size:2rem;letter-spacing:2px;color:#0b1220;line-height:.9}
+.idbot small{font-size:.48rem;color:#334;text-align:right;line-height:1.4;font-weight:600}
+.shine{position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 45%,transparent 60%);mix-blend-mode:overlay;pointer-events:none;z-index:4}
+.qr{width:110px;height:110px;background:#fff;border-radius:8px;padding:8px}
+.lanhint{position:absolute;bottom:20px;left:0;right:0;text-align:center;font-size:.72rem;color:var(--muted);letter-spacing:1px}
+
+/* SECTIONS */
+.sec{max-width:1150px;margin:auto;padding:110px 6vw 60px}
+.sec h2{text-align:center;font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-1px;margin-bottom:12px}
+.sec .subt{text-align:center;color:var(--muted);margin-bottom:48px}
+.glass{background:var(--card);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(10px)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center}
+.aboutpic{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:3/4;border:1px solid var(--line)}
+.aboutpic img{width:100%;height:100%;object-fit:cover}
+.aboutpic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(5,7,15,.6))}
+.about h3{font-size:1.6rem;margin-bottom:14px}
+.about h3 span{color:var(--blue2)}
+.about p{color:var(--muted);line-height:1.85;margin-bottom:14px}
+.dlnote{font-size:.8rem;color:var(--muted);margin-top:10px;min-height:1em}
+.rmodal{position:fixed;inset:0;z-index:70;background:rgba(2,4,10,0);backdrop-filter:blur(0);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:70px 16px 40px;perspective:1400px;transition:background .45s,backdrop-filter .45s}
+.rmodal.open{display:flex}
+.rmodal.show{background:rgba(2,4,10,.84);backdrop-filter:blur(8px)}
+.sheet{position:relative;width:min(760px,100%);border-radius:10px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06);
+  transform:translateY(90px) rotateX(18deg) scale(.86);opacity:0;transform-origin:50% 0;transition:transform .7s cubic-bezier(.2,1.25,.35,1),opacity .4s}
+.rmodal.show .sheet{transform:none;opacity:1}
+.sheet img{display:block;width:100%}
+.sheet::after{content:"";position:absolute;left:0;right:0;top:-30%;height:30%;background:linear-gradient(180deg,transparent,rgba(96,165,250,.35),rgba(147,197,253,.6),transparent);mix-blend-mode:screen;pointer-events:none;opacity:0}
+.rmodal.show .sheet::after{animation:rscan 1.3s .35s ease-in-out forwards}
+@keyframes rscan{0%{top:-30%;opacity:1}90%{opacity:1}100%{top:110%;opacity:0}}
+.rclose{transform:scale(0) rotate(-90deg);transition:transform .45s .25s cubic-bezier(.3,1.6,.5,1)}
+.rmodal.show .rclose{transform:none}
+.rclose:hover{background:#3b82f6}
+.rtag{position:fixed;top:24px;left:50%;transform:translate(-50%,-20px);opacity:0;font-size:.78rem;letter-spacing:2px;color:#93c5fd;transition:.5s .3s;pointer-events:none}
+.rmodal.show .rtag{opacity:1;transform:translate(-50%,0)}
+.rclose{position:fixed;top:18px;right:20px;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(15,19,33,.9);color:#fff;font-size:1.1rem;cursor:pointer}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
+.stat{padding:18px;text-align:center}
+.stat b{display:block;font-size:1.8rem;color:var(--blue2)}
+.stat small{color:var(--muted);font-size:.78rem}
+
+/* PORTFOLIO */
+.tabs{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+.tab{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-family:inherit;font-weight:600;font-size:.84rem;cursor:pointer;transition:.25s}
+.tab.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.pane{display:none}.pane.on{display:block;animation:fu .5s}
+@keyframes pop{from{opacity:0;transform:scale(.8) translateY(14px)}}
+@keyframes fu{from{opacity:0;transform:translateY(14px)}}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px}
+.proj{overflow:hidden;transition:.3s}
+.proj:hover{transform:translateY(-6px);border-color:rgba(96,165,250,.4);box-shadow:0 20px 50px rgba(59,130,246,.15)}
+.mock{height:180px;margin:12px 12px 0;border-radius:12px;overflow:hidden;position:relative;border:1px solid var(--line)}
+.mock .bar{height:18px;background:rgba(0,0,0,.35);display:flex;gap:4px;align-items:center;padding:0 8px}
+.mock .bar i{width:6px;height:6px;border-radius:50%;background:#ffffff40}
+.mock .ui{position:absolute;inset:18px 0 0;padding:12px;display:grid;grid-template-columns:1fr 2fr;gap:8px}
+.mock .ui div{border-radius:6px;background:rgba(255,255,255,.08)}
+.mock .em{position:absolute;right:14px;bottom:10px;font-size:2rem}
+.proj .body{padding:18px 20px 20px}
+.proj h4{font-size:1.08rem;margin-bottom:6px}
+.proj p{color:var(--muted);font-size:.86rem;line-height:1.65;margin-bottom:16px}
+.proj .row{display:flex;justify-content:space-between;align-items:center}
+.lnk{font-size:.84rem;font-weight:600;color:var(--blue2);cursor:pointer;background:none;border:0;font-family:inherit}
+.det{font-size:.8rem;padding:7px 14px;border-radius:8px;border:1px solid var(--line);cursor:pointer;background:transparent;color:var(--text);font-family:inherit}
+.cert,.ach{padding:22px;display:flex;gap:16px;align-items:flex-start}
+.cert .ic,.ach .ic{width:48px;height:48px;border-radius:12px;background:rgba(59,130,246,.15);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.cert h4,.ach h4{margin-bottom:4px}
+.cert small,.ach small{color:var(--blue2);font-size:.76rem}
+.cert p,.ach p{color:var(--muted);font-size:.85rem;margin-top:6px;line-height:1.6}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:16px}
+.tech{padding:22px 10px;text-align:center;transition:.3s}
+.tech:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--c) 45%,transparent)}
+.tech .logo{width:58px;height:58px;margin:0 auto 12px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--c) 12%,transparent);border:1px solid color-mix(in srgb,var(--c) 30%,transparent);transition:.3s}
+.tech .logo svg{width:30px;height:30px;fill:var(--c);filter:drop-shadow(0 0 0 transparent);transition:.3s}
+.tech:hover .logo{transform:translateY(-3px) rotate(-4deg);box-shadow:0 10px 28px color-mix(in srgb,var(--c) 35%,transparent)}
+.tech:hover .logo svg{filter:drop-shadow(0 0 8px color-mix(in srgb,var(--c) 70%,transparent))}
+.tgrid .tech{animation:pop .5s backwards}
+.tech span{font-size:.84rem;font-weight:600}
+
+/* DETAIL */
+.detail{position:fixed;inset:0;z-index:60;background:var(--bg);overflow-y:auto;display:none;padding:100px 6vw 60px}
+.detail.open{display:block;animation:fu .4s}
+.crumb{display:flex;align-items:center;gap:14px;font-size:.84rem;color:var(--muted);margin-bottom:34px;max-width:1150px;margin-inline:auto}
+.crumb button{padding:8px 14px;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;font-family:inherit}
+.crumb b{color:var(--text);font-weight:600}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1150px;margin:auto;align-items:start}
+.dgrid h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-1px;margin-bottom:18px}
+.dgrid p{color:var(--muted);line-height:1.85}
+.dgrid h5{margin:28px 0 12px;font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);font-size:.8rem}
+.dgrid .mock{height:300px;margin:0}
+
+/* CONTACT */
+.cgrid{display:grid;grid-template-columns:1fr 1.15fr;gap:24px}
+.cbox{padding:26px}
+.cbox h3{font-size:1.4rem;color:var(--blue2);margin-bottom:6px}
+.cbox>p{color:var(--muted);font-size:.88rem;margin-bottom:20px}
+label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px}
+input,textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--text);font-family:inherit;font-size:.9rem;margin-bottom:14px}
+body.light input,body.light textarea{background:#fff}
+input:focus,textarea:focus{outline:none;border-color:var(--blue)}
+.soc{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;border:1px solid var(--line);margin-top:10px;transition:.25s}
+.soc:hover{border-color:rgba(96,165,250,.4);transform:translateX(4px)}
+.soc .si{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.soc .si svg{width:18px;height:18px;fill:#fff}
+.soc b{display:block;font-size:.9rem}.soc small{color:var(--muted);font-size:.76rem}
+.soc .ar{margin-left:auto;color:var(--muted)}
+.chead{display:flex;align-items:center;gap:10px;font-weight:700;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.clist{display:flex;flex-direction:column;gap:12px;margin-top:18px;max-height:340px;overflow-y:auto}
+.cm{display:flex;gap:12px;padding:12px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.cm .av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#6366f1);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#fff;flex-shrink:0}
+.cm b{font-size:.86rem}.cm small{color:var(--muted);font-size:.7rem;margin-left:6px}
+.cm p{font-size:.85rem;color:var(--muted);margin-top:3px;line-height:1.5}
+.note{font-size:.78rem;color:#86efac;margin-top:4px;display:none}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);margin-top:60px}
+.fwrap{max-width:1150px;margin:auto;padding:70px 6vw 34px}
+.fsay{font-size:clamp(1.9rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-1.2px;line-height:1.1;max-width:760px}
+.fsay span{color:var(--blue2)}
+.fmail{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:1rem;font-weight:600;color:var(--text);border-bottom:2px solid var(--blue);padding-bottom:4px;transition:.25s}
+.fmail:hover{color:var(--blue2);gap:16px}
+.frow{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;margin-top:60px;padding-top:24px;border-top:1px dashed var(--line)}
+.fme{display:flex;align-items:center;gap:12px}
+.fme img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
+.fme b{display:block;font-size:.92rem}
+.fme small{color:var(--muted);font-size:.78rem}
+.fme .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#4ade80;margin-right:6px;box-shadow:0 0 8px #4ade80;vertical-align:1px}
+.fsoc{display:flex;gap:10px;flex-wrap:wrap}
+.fsoc a{display:inline-flex;align-items:center;gap:9px;padding:6px 14px 6px 6px;border-radius:30px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:.82rem;font-weight:500;color:var(--text);transition:.25s}
+.fsoc a:hover{border-color:rgba(96,165,250,.5);transform:translateY(-2px)}
+.fsoc .fi{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fsoc .fi svg{width:13px;height:13px;fill:#fff}
+.fend{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:26px;font-size:.76rem;color:var(--muted)}
+.fend a{color:var(--muted)}.fend a:hover{color:var(--text)}
+
+@media(max-width:900px){
+  nav a{padding:8px 11px;font-size:.78rem}
+  .hero{grid-template-columns:1fr;padding-top:110px;text-align:center}
+  .hero p.lead{margin-left:auto;margin-right:auto}.cta,.findme{justify-content:center}
+  .lan{height:600px;margin-top:-30px;order:-1}
+  .about,.cgrid,.dgrid{grid-template-columns:1fr}
+  .aboutpic{max-width:340px;margin:auto}
+}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+
+<nav id="nav">
+  <a href="#home" class="on">Home</a><a href="#about">About</a><a href="#portfolio">Portfolio</a><a href="#contact">Contact</a>
+  <button id="theme" title="Toggle theme">☾</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div>
+    <div class="avail"><span></span>Open for internship</div>
+    <h1><span class="g">Welcome to</span><br>My Portfolio</h1>
+    <div class="typed"><span id="typed"></span><i></i></div>
+    <p class="lead">Driven by curiosity and a passion for technology, I'm <b>Anniq Darwisy</b>, a Computer Technology student with a strong interest in <b>web development</b>, <b>database management</b>, and <b>software development</b>.</p>
+    <p class="lead" style="margin-top:12px">I enjoy transforming creative ideas into functional digital solutions, from designing user-friendly interfaces to developing interactive websites and applications. My goal is to create innovative, efficient, and meaningful digital experiences through technology.</p>
+    <div class="cta">
+      <a href="#portfolio" class="btn pri">View Projects →</a>
+      <a href="#contact" class="btn">Contact Me ➤</a>
+    </div>
+    <div class="findme">FIND ME
+      <a href="https://github.com/isymars" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></a>
+      <a href="https://instagram.com/anniqszn" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg></a>
+      <a href="https://www.tiktok.com/@ssup" title="TikTok"><svg viewBox="0 0 24 24"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.4a2.9 2.9 0 1 1-2-2.7V9.2a6.3 6.3 0 1 0 5.4 6.2V8.6a8.2 8.2 0 0 0 4.8 1.5V6.8z"/></svg></a>
+      <a href="https://www.linkedin.com/search/results/all/?keywords=ANNIQ%20DARWISY%20BIN%20AMRIN" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6z"/></svg></a>
+    </div>
+  </div>
+
+  <div class="lan" id="lan">
+    <canvas id="rope"></canvas>
+    <div class="idcard" id="card">
+      <div class="flip" id="flip">
+        <div class="face f">
+          <div class="hole"></div>
+          <div class="idtop">DEVELOPER</div>
+          <div class="idphoto"><img src="photo.jpg" alt="Anniq"></div>
+          <div class="idname">ANNIQ DARWISY BIN AMRIN<small>Computer Technology · Web Developer</small></div>
+          <div class="idside">ANNIQ.DEV</div>
+          <div class="idbot"><b>PORTFOLIO</b><small>ID · AD-2026<br>VALID 2026–∞</small></div>
+          <div class="shine" id="shine"></div>
+        </div>
+        <div class="face b">
+          <div class="hole"></div>
+          <svg class="qr" viewBox="0 0 21 21" id="qr"></svg>
+          <div style="font-family:'Bebas Neue';font-size:1.6rem;letter-spacing:2px">ANNIQ.DEV</div>
+          <div style="font-size:.7rem;opacity:.7;line-height:1.6">HTML · CSS · JavaScript · Java<br>PHP · Laravel · Figma · Flutter · Dart</div>
+        </div>
+      </div>
+    </div>
+    <div class="lanhint">⟵ Drag the card · double-click to flip ⟶</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <h2 class="reveal" style="margin-bottom:48px">About Me</h2>
+    <div class="about">
+    <div class="aboutpic reveal"><img src="about2.jpg" alt="Anniq Darwisy"></div>
+    <div class="reveal">
+      <h3>Hi, I'm <span>Anniq Darwisy</span> 👋</h3>
+      <p>Hello! My name is Anniq Darwisy bin Amrin, a Diploma in Computer Technology student at Kuala Selangor Vocational College, Selangor. I have a strong passion for Information Technology, with particular interests in Web Development, Database Management, and Software Development. Through various academic and practical projects, I have gained experience in designing and developing interactive websites, applications, and digital management systems.</p>
+      <p>I am a highly motivated and adaptable individual with a strong commitment to continuous learning and professional growth. Equipped with technical knowledge, problem-solving abilities, and leadership skills, I strive to develop effective digital solutions while continuously enhancing my capabilities. I look forward to gaining industry experience, embracing new challenges, and contributing positively to the field of technology.</p>
+      <div class="stats">
+        <div class="stat glass"><b data-n="3.71" data-d="2">0</b><small>Diploma CGPA</small></div>
+        <div class="stat glass"><b data-n="13" data-s="+">0</b><small>Tech skills</small></div>
+        <div class="stat glass"><b data-n="2" data-s="+">0</b><small>Years work experience</small></div>
+      </div>
+      <div class="cta" style="margin-top:0"><a class="btn pri" id="dlResume" href="resume.pdf" download="Resume_Anniq_Darwisy.pdf">⬇ Download Resume</a><button class="btn" id="viewResume">👁 View Resume</button></div><p class="dlnote" id="dlnote"></p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="sec" id="portfolio">
+  <h2 class="reveal">Portfolio</h2>
+  <p class="subt reveal">Projects, experience, achievements and the tech I use.</p>
+  <div class="tabs reveal">
+    <button class="tab on" data-p="projects">‹/› Projects</button>
+    <button class="tab" data-p="certs">🎓 Experience</button>
+    <button class="tab" data-p="achs">🏆 Achievements</button>
+    <button class="tab" data-p="stack">⚙ Tech Stack</button>
+  </div>
+  <div class="pane on" id="projects"><div class="pgrid" id="pgrid"></div></div>
+  <div class="pane" id="certs"><div class="pgrid">
+    <div class="cert glass"><div class="ic">📦</div><div><h4>Warehouse Assistant</h4><small>Rurutiki Sdn Bhd · 2024 – 2026</small><p>Managed the receiving, inspection and organisation of incoming inventory, coordinated picking and packing for shipment, and kept the warehouse organised with proper storage procedures.</p></div></div>
+    <div class="cert glass"><div class="ic">🎓</div><div><h4>Diploma in Computer Technology</h4><small>KV Kuala Selangor · 2025 – 2027 · CGPA 3.71</small><p>Currently pursuing, with a focus on web development, databases and software development.</p></div></div>
+    <div class="cert glass"><div class="ic">📘</div><div><h4>Sijil Vokasional Malaysia (SVM)</h4><small>KV Kuala Selangor · 2023 – 2025 · CGPA 3.42</small><p>Database Management and Web System Development.</p></div></div>
+  </div></div>
+  <div class="pane" id="achs"><div class="pgrid">
+    <div class="ach glass"><div class="ic">💡</div><div><h4>SPARK Innovation</h4><small>Innovation programme</small><p>Developed the SPARK hostel management app and took part in an innovation programme/competition.</p></div></div>
+    <div class="ach glass"><div class="ic">🏠</div><div><h4>Head of Hostel Student Council</h4><small>KV Kuala Selangor</small><p>Led the hostel student council, managing a team and representing hostel students.</p></div></div>
+    <div class="ach glass"><div class="ic">🏐</div><div><h4>Volleyball Representative</h4><small>4 years · National level</small><p>Represented the college in volleyball competitions for four years, including one year at national level.</p></div></div>
+  </div></div>
+  <div class="pane" id="stack"><div class="tgrid" id="tgrid"></div></div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contact">
+  <h2 class="reveal">Contact Me</h2>
+  <p class="subt reveal">Have a project idea or job opportunity? Let's talk!</p>
+  <div class="cgrid">
+    <div class="cbox glass reveal">
+      <h3>Get in Touch</h3>
+      <p>Something to discuss? Send me a message and I'll reply as soon as I can.</p>
+      <form id="cform">
+        <input required placeholder="Your name">
+        <input type="email" required placeholder="Your email">
+        <textarea rows="4" required placeholder="Your message"></textarea>
+        <button class="btn pri" style="width:100%;justify-content:center">Send Message ➤</button>
+        <p class="note" id="cnote">✓ Thank you! Your message has been received.</p>
+      </form>
+      <a class="soc" href="mailto:anniqdarwisyamrin7@gmail.com"><div class="si" style="background:#ea4335">✉</div><div><b>Email</b><small>anniqdarwisyamrin7@gmail.com</small></div><span class="ar">↗</span></a>
+      <a class="soc" href="https://instagram.com/anniqszn"><div class="si" style="background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af)"><svg viewBox="0 0 24 24"><path d="M12 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9zM12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2z"/></svg></div><div><b>Instagram</b><small>@anniqszn</small></div><span class="ar">↗</span></a>
+      <a class="soc" href="https://www.tiktok.com/@ssup"><div class="si" style="background:#111;border:1px solid #333"><svg viewBox="0 0 24 24"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.4a2.9 2.9 0 1 1-2-2.7V9.2a6.3 6.3 0 1 0 5.4 6.2V8.6a8.2 8.2 0 0 0 4.8 1.5V6.8z"/></svg></div><div><b>TikTok</b><small>@ssup</small></div><span class="ar">↗</span></a>
+      <a class="soc" href="https://github.com/isymars"><div class="si" style="background:#24292f"><svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></div><div><b>GitHub</b><small>@isymars</small></div><span class="ar">↗</span></a>
+      <a class="soc" href="https://www.linkedin.com/search/results/all/?keywords=ANNIQ%20DARWISY%20BIN%20AMRIN"><div class="si" style="background:#0a66c2"><svg viewBox="0 0 24 24"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6z"/></svg></div><div><b>LinkedIn</b><small>ANNIQ DARWISY BIN AMRIN</small></div><span class="ar">↗</span></a>
+    </div>
+    <div class="cbox glass reveal">
+      <div class="chead">💬 Comments <span id="ccount" style="color:var(--muted);font-weight:500">(0)</span></div>
+      <form id="kform">
+        <label>Name</label><input id="kname" required placeholder="Enter your name">
+        <label>Comment</label><textarea id="kmsg" rows="3" required placeholder="Write your comment here..."></textarea>
+        <button class="btn pri">Post Comment</button>
+      </form>
+      <div class="clist" id="clist"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fwrap">
+    <div class="fsay">Got an idea in mind?<br>Let's <span>build it</span> together.</div>
+    <a class="fmail" href="#contact">Say hello →</a>
+    <div class="frow">
+      <div class="fme"><img src="photo.jpg" alt=""><div><b>Anniq Darwisy</b><small><span class="dot"></span>Kuala Selangor, MY · <span id="clock">--:--</span></small></div></div>
+      <div class="fsoc">
+        <a href="https://github.com/isymars"><span class="fi" style="background:#24292f"><svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></span>isymars</a>
+        <a href="https://instagram.com/anniqszn"><span class="fi" style="background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af)"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg></span>anniqszn</a>
+        <a href="https://www.tiktok.com/@ssup"><span class="fi" style="background:#111;border:1px solid #333"><svg viewBox="0 0 24 24"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.4a2.9 2.9 0 1 1-2-2.7V9.2a6.3 6.3 0 1 0 5.4 6.2V8.6a8.2 8.2 0 0 0 4.8 1.5V6.8z"/></svg></span>ssup</a>
+        <a href="https://www.linkedin.com/search/results/all/?keywords=ANNIQ%20DARWISY%20BIN%20AMRIN"><span class="fi" style="background:#0a66c2"><svg viewBox="0 0 24 24"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6z"/></svg></span>Anniq Darwisy</a>
+      </div>
+    </div>
+    <div class="fend"><span>© <span id="yr"></span></span><a href="#home">Back to top ↑</a></div>
+  </div>
+</footer>
+
+<!-- PROJECT DETAIL -->
+<div class="detail" id="detail"></div>
+<div class="rmodal" id="rmodal"><button class="rclose" id="rclose" aria-label="Close">✕</button><span class="rtag">RESUME · ANNIQ DARWISY</span><div class="sheet"><img src="resume.jpg" alt="Resume of Anniq Darwisy"></div></div>
+
+<!-- Tech icons: Font Awesome Free (CC BY 4.0) https://fontawesome.com -->
+<script>
+/* ===== Stars + shooting stars ===== */
+const sc=document.getElementById('stars'),sx=sc.getContext('2d');let S=[],shoot=[];
+function rs(){sc.width=innerWidth*devicePixelRatio;sc.height=innerHeight*devicePixelRatio;sx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  S=Array.from({length:Math.floor(innerWidth*innerHeight/5500)},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.3+.2,t:Math.random()*6,s:Math.random()*.02+.005}))}
+rs();addEventListener('resize',rs);
+function stars(){
+  sx.clearRect(0,0,innerWidth,innerHeight);
+  const light=document.body.classList.contains('light');
+  for(const s of S){s.t+=s.s;const a=.35+Math.sin(s.t)*.35+.3;sx.fillStyle=light?`rgba(40,60,120,${a*.45})`:`rgba(220,230,255,${a})`;sx.beginPath();sx.arc(s.x,s.y,s.r,0,7);sx.fill()}
+  if(Math.random()<.012&&shoot.length<2)shoot.push({x:Math.random()*innerWidth*.8+innerWidth*.2,y:Math.random()*innerHeight*.4,l:0});
+  shoot=shoot.filter(m=>m.l<1);
+  for(const m of shoot){m.l+=.018;const x=m.x-m.l*420,y=m.y+m.l*240;const g=sx.createLinearGradient(x,y,x+110,y-63);
+    g.addColorStop(0,light?'rgba(59,130,246,.8)':'rgba(255,255,255,.95)');g.addColorStop(1,'rgba(255,255,255,0)');
+    sx.strokeStyle=g;sx.lineWidth=1.6;sx.beginPath();sx.moveTo(x,y);sx.lineTo(x+110,y-63);sx.stroke()}
+  requestAnimationFrame(stars)}
+stars();
+
+/* ===== Typing ===== */
+const R=['Web Developer','UI/UX Designer','Computer Technology Student','Laravel & Flutter Developer'];let ri=0,ci=0,dl=false;const te=document.getElementById('typed');
+(function t(){const w=R[ri];te.textContent=w.slice(0,ci);
+  if(!dl&&ci<w.length){ci++;setTimeout(t,80)}else if(!dl){dl=true;setTimeout(t,1600)}else if(ci>0){ci--;setTimeout(t,40)}else{dl=false;ri=(ri+1)%R.length;setTimeout(t,300)}})();
+
+/* ===== Lanyard physics (verlet rope + card) ===== */
+const lan=document.getElementById('lan'),rc=document.getElementById('rope'),rx=rc.getContext('2d'),card=document.getElementById('card'),flip=document.getElementById('flip'),shine=document.getElementById('shine');
+const N=14;let P=[],SEG=17,W,H,dragging=false,mx=0,my=0,lastX=0,spin=0;
+function setup(){
+  W=lan.clientWidth;H=lan.clientHeight;rc.width=W*devicePixelRatio;rc.height=H*devicePixelRatio;rx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  SEG=Math.min(19,(H*.42)/N);const ax=W*.55;
+  P=Array.from({length:N},(_,i)=>({x:ax+i*9,y:-10+i*SEG*.6,ox:ax+i*9-4,oy:-10+i*SEG*.6}));
+}
+setup();addEventListener('resize',setup);
+function step(){
+  const ax=W*.55;P[0].x=ax;P[0].y=-10;
+  for(let i=1;i<N;i++){const p=P[i];const vx=(p.x-p.ox)*.985,vy=(p.y-p.oy)*.985;p.ox=p.x;p.oy=p.y;p.x+=vx;p.y+=vy+(i===N-1?.9:.5)}
+  if(dragging){const e=P[N-1];e.x=mx;e.y=my}
+  for(let k=0;k<24;k++){
+    for(let i=0;i<N-1;i++){const a=P[i],b=P[i+1];const dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1,diff=(d-SEG)/d;
+      if(i===0){b.x-=dx*diff;b.y-=dy*diff}
+      else if(dragging&&i+1===N-1){a.x+=dx*diff;a.y+=dy*diff}
+      else{a.x+=dx*diff*.5;a.y+=dy*diff*.5;b.x-=dx*diff*.5;b.y-=dy*diff*.5}}
+    P[0].x=ax;P[0].y=-10;if(dragging){P[N-1].x=mx;P[N-1].y=my}
+  }
+  // rope draw (strap)
+  rx.clearRect(0,0,W,H);
+  rx.lineCap='round';rx.lineJoin='round';
+  rx.strokeStyle='#0b0e17';rx.lineWidth=16;rx.beginPath();rx.moveTo(P[0].x,P[0].y);
+  for(let i=1;i<N-1;i++){const xc=(P[i].x+P[i+1].x)/2,yc=(P[i].y+P[i+1].y)/2;rx.quadraticCurveTo(P[i].x,P[i].y,xc,yc)}
+  rx.lineTo(P[N-1].x,P[N-1].y);rx.stroke();
+  rx.strokeStyle='rgba(96,165,250,.55)';rx.lineWidth=1.5;rx.setLineDash([6,8]);rx.stroke();rx.setLineDash([]);
+  // clip
+  const e=P[N-1],p=P[N-2];const ang=Math.atan2(e.y-p.y,e.x-p.x)-Math.PI/2;
+  rx.save();rx.translate(e.x,e.y);rx.rotate(ang);rx.fillStyle='#9aa3b5';rx.fillRect(-9,-6,18,14);rx.fillStyle='#5b6478';rx.fillRect(-4,6,8,8);rx.restore();
+  // card
+  const vx=e.x-lastX;lastX=e.x;spin=spin*.9+vx*1.6;spin=Math.max(-55,Math.min(55,spin));
+  card.style.transform=`translate(${e.x-115}px,${e.y+10}px) rotate(${ang}rad) rotateY(${spin}deg)`;
+  card.style.transformOrigin='115px -10px';
+  shine.style.transform=`translateX(${spin*2.5}%)`;
+  requestAnimationFrame(step);
+}
+step();
+function pt(ev){const r=lan.getBoundingClientRect();return[ev.clientX-r.left,ev.clientY-r.top-14]}
+card.addEventListener('pointerdown',e=>{dragging=true;card.classList.add('drag');card.setPointerCapture(e.pointerId);[mx,my]=pt(e)});
+card.addEventListener('pointermove',e=>{if(dragging)[mx,my]=pt(e)});
+card.addEventListener('pointerup',()=>{dragging=false;card.classList.remove('drag');const e=P[N-1];e.ox=e.x-(mx-e.x)*.1});
+card.addEventListener('dblclick',()=>flip.classList.toggle('back'));
+
+/* QR-ish pattern on card back */
+(function(){const q=document.getElementById('qr');let s='';const f=(x,y)=>`<rect x="${x}" y="${y}" width="7" height="7" fill="#0b1220"/><rect x="${x+1}" y="${y+1}" width="5" height="5" fill="#fff"/><rect x="${x+2}" y="${y+2}" width="3" height="3" fill="#0b1220"/>`;
+  s+=f(0,0)+f(14,0)+f(0,14);let seed=7;const rnd=()=>(seed=(seed*9301+49297)%233280)/233280;
+  for(let y=0;y<21;y++)for(let x=0;x<21;x++){if((x<8&&y<8)||(x>12&&y<8)||(x<8&&y>12))continue;if(rnd()>.52)s+=`<rect x="${x}" y="${y}" width="1" height="1" fill="#0b1220"/>`}q.innerHTML=s})();
+
+/* ===== Nav active + theme ===== */
+const links=[...document.querySelectorAll('nav a')];
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id))}),{threshold:.4});
+['home','about','portfolio','contact'].forEach(id=>io.observe(document.getElementById(id)));
+const th=document.getElementById('theme');
+function setT(l){document.body.classList.toggle('light',l);th.textContent=l?'☀':'☾';try{localStorage.setItem('ad-light',l?'1':'0')}catch(e){}}
+try{setT(localStorage.getItem('ad-light')==='1')}catch(e){}
+th.onclick=()=>setT(!document.body.classList.contains('light'));
+
+/* ===== Reveal + counters ===== */
+const ro=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');
+  en.target.querySelectorAll?.('[data-n]').forEach(b=>{const t=+b.dataset.n,d=+(b.dataset.d||0),sf=b.dataset.s||'';let k=0;const iv=setInterval(()=>{k++;const v=t*k/25;b.textContent=v.toFixed(d)+(k>=25?sf:'');if(k>=25)clearInterval(iv)},40)});ro.unobserve(en.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* ===== Projects ===== */
+const PR=[
+  {t:'SPARK',sub:'Student Permission and Residence Keeping',e:'🛂',c:'#1e3a8a',d:'A mobile application that manages hostel permission applications and student movements digitally, replacing paper forms with a faster, trackable flow.',s:['Mobile App','Firebase','QR Code'],
+   f:['Students submit permission applications in the app','Warden reviews and approves requests','QR code generation and scanning','Automated entry and exit records']},
+  {t:'CodeFusion',sub:'Interactive Learning Website',e:'🧩',c:'#6b21a8',d:'An interactive educational website with digital learning materials, programming notes and educational games that make learning more engaging.',s:['Website','E-Learning','Educational Games'],
+   f:['Digital learning materials','Programming notes','Educational games','User-friendly web-based activities']},
+  {t:'Anniq.dev',sub:'Personal Portfolio Website',e:'🪐',c:'#1e293b',d:'This space-themed portfolio, with an interactive ID card on a lanyard that you can drag, swing and flip.',s:['HTML','CSS','JavaScript','Canvas'],
+   f:['Draggable lanyard ID card with physics','Dark and light themes','Responsive on phone and desktop']},
+];
+const mock=p=>`<div class="mock" style="background:linear-gradient(135deg,${p.c},#0b1020)"><div class="bar"><i></i><i></i><i></i></div><div class="ui"><div></div><div></div><div></div><div></div></div><span class="em">${p.e}</span></div>`;
+document.getElementById('pgrid').innerHTML=PR.map((p,i)=>`<div class="proj glass">${mock(p)}<div class="body"><h4>${p.t}</h4><small style="color:var(--blue2);font-size:.76rem;font-weight:600">${p.sub}</small><p style="margin-top:8px">${p.d.slice(0,110)}...</p>
+  <div class="row"><span></span><button class="det" data-i="${i}">Details →</button></div></div></div>`).join('');
+const det=document.getElementById('detail');
+document.querySelectorAll('.det').forEach(b=>b.onclick=()=>{const p=PR[b.dataset.i];
+  det.innerHTML=`<div class="crumb"><button id="back">← Back</button><span>Projects</span>›<b>${p.t}</b></div>
+  <div class="dgrid"><div><h1>${p.t}</h1><p style="color:var(--blue2);font-weight:600;margin:-8px 0 14px">${p.sub}</p><p>${p.d}</p><h5>‹/› Technologies Used</h5><div class="chips">${p.s.map(x=>`<span>${x}</span>`).join('')}</div>
+  <h5>✦ Key Features</h5><p>${p.f.map(x=>'• '+x).join('<br>')}</p></div>${mock(p)}</div>`;
+  det.classList.add('open');det.scrollTop=0;document.body.style.overflow='hidden';
+  document.getElementById('back').onclick=()=>{det.classList.remove('open');document.body.style.overflow=''}});
+
+/* ===== Tabs ===== */
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id===b.dataset.p));
+  if(b.dataset.p==='stack')document.querySelectorAll('#tgrid .tech').forEach((t,i)=>{t.style.animation='none';t.offsetHeight;t.style.animation='';t.style.animationDelay=(i*45)+'ms'})});
+
+/* ===== Tech stack ===== */
+const TS=[["HTML5", "#e44d26", "0 0 384 512", "M0 32L34.9 427.8 191.5 480 349.1 427.8 384 32 0 32zM308.2 159.9l-183.8 0 4.1 49.4 175.6 0-13.6 148.4-97.9 27 0 .3-1.1 0-98.7-27.3-6-75.8 47.7 0 3.5 38.1 53.5 14.5 53.7-14.5 6-62.2-166.9 0-12.8-145.6 241.1 0-4.4 47.7z"], ["CSS3", "#2965f1", "0 0 384 512", "M0 32L34.9 427.8 192 480 349.1 427.8 384 32 0 32zm313.1 80l-4.8 47.3-115.3 49.3-.3 .1 111.5 0-12.8 146.6-98.2 28.7-98.8-29.2-6.4-73.9 48.9 0 3.2 38.3 52.6 13.3 54.7-15.4 3.7-61.6-166.3-.5 0-.1-.2 .1-3.6-46.3 112.1-46.7 6.5-2.7-122.9 0-5.8-47.3 242.2 0z"], ["JavaScript", "#f7df1e", "0 0 448 512", "M448 96c0-35.3-28.7-64-64-64L64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320zM180.9 444.9c-33.7 0-53.2-17.4-63.2-38.5L152 385.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5l0-143.1 42.1 0 0 143.7c0 43.6-25.6 63.5-62.9 63.5zm85.8-43L301 382.1c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6-39.1 0-64.4-18.6-76.7-43z"], ["PHP", "#8892bf", "0 0 640 512", "M320 104.5c171.4 0 303.2 72.2 303.2 151.5S491.3 407.5 320 407.5C148.6 407.5 16.8 335.3 16.8 256S148.7 104.5 320 104.5zm0-16.8C143.3 87.7 0 163 0 256S143.3 424.3 320 424.3 640 349 640 256 496.7 87.7 320 87.7zM218.2 242.5c-7.9 40.5-35.8 36.3-70.1 36.3l13.7-70.6c38 0 63.8-4.1 56.4 34.3zM97.4 350.3l36.7 0 8.7-44.8c41.1 0 66.6 3 90.2-19.1 26.1-24 32.9-66.7 14.3-88.1-9.7-11.2-25.3-16.7-46.5-16.7l-70.7 0-32.7 168.7zM283.1 136.7l36.5 0-8.7 44.8c31.5 0 60.7-2.3 74.8 10.7 14.8 13.6 7.7 31-8.3 113.1l-37 0c15.4-79.4 18.3-86 12.7-92-5.4-5.8-17.7-4.6-47.4-4.6l-18.8 96.6-36.5 0 32.7-168.6zM505 242.5c-8 41.1-36.7 36.3-70.1 36.3l13.7-70.6c38.2 0 63.8-4.1 56.4 34.3zM384.2 350.3l36.8 0 8.7-44.8c43.2 0 67.1 2.5 90.2-19.1 26.1-24 32.9-66.7 14.3-88.1-9.7-11.2-25.3-16.7-46.5-16.7l-70.7 0-32.8 168.7z"], ["Java", "#f89820", "0 0 384 512", "M277.8 312.9c9.8-6.7 23.4-12.5 23.4-12.5s-38.7 7-77.2 10.2c-47.1 3.9-97.7 4.7-123.1 1.3-60.1-8 33-30.1 33-30.1s-36.1-2.4-80.6 19c-52.5 25.4 130 37 224.5 12.1zm-85.4-32.1c-19-42.7-83.1-80.2 0-145.8 103.7-81.8 50.5-135 50.5-135 21.5 84.5-75.6 110.1-110.7 162.6-23.9 35.9 11.7 74.4 60.2 118.2zM307 104.6c.1 0-175.2 43.8-91.5 140.2 24.7 28.4-6.5 54-6.5 54s62.7-32.4 33.9-72.9C216 188.1 195.4 169.3 307 104.6zm-6.1 270.5c-.5 1-1.2 1.8-2 2.6 128.3-33.7 81.1-118.9 19.8-97.3-3.3 1.2-6.2 3.4-8.2 6.3 3.6-1.3 7.3-2.3 11-3 31-6.5 75.5 41.5-20.6 91.4zM348 437.4s14.5 11.9-15.9 21.2c-57.9 17.5-240.8 22.8-291.6 .7-18.3-7.9 16-19 26.8-21.3 11.2-2.4 17.7-2 17.7-2-20.3-14.3-131.3 28.1-56.4 40.2 204.2 33.2 372.4-14.9 319.4-38.8zM124.5 396c-78.7 22 47.9 67.4 148.1 24.5-9.8-3.8-19.2-8.4-28.2-13.8-44.7 8.5-65.4 9.1-106 4.5-33.5-3.8-13.9-15.2-13.9-15.2zm179.8 97.2c-78.7 14.8-175.8 13.1-233.3 3.6 0-.1 11.8 9.7 72.4 13.6 92.2 5.9 233.8-3.3 237.1-46.9 0 0-6.4 16.5-76.2 29.7zM260.7 353c-59.2 11.4-93.5 11.1-136.8 6.6-33.5-3.5-11.6-19.7-11.6-19.7-86.8 28.8 48.2 61.4 169.5 25.9-7.8-2.8-15-7.1-21.1-12.8z"], ["Dart", "#0ea5e9", "0 0 512 512", "M378.6 78.9c-2.8-.1-5.6-.2-8.5-.2l-264.1 0 143.2-72c7.4-4.4 18.8-6.7 30.4-6.7 13.5 0 29.4 9.2 37 16.8l62 62 0 .1zM107.3 96.5l262.8 0c16 0 25.4 1.4 35.4 9.3l106.5 106.4 0 208.8-79.3 .7-325.4-325.2zM96.5 373l0-262.2 323.8 323.8 .7 77.4-212.2 0-98.1-98.2C99.4 402.5 96.5 398.5 96.5 373zM78.7 105.3l0 267.7c0 3.3 .1 6.3 .2 9.1l-62-62C6.5 309.3 0 294.3 0 279.6 0 272.8 3.9 262.1 6.7 256l72-150.7z"], ["Flutter", "#54c5f8", "0 0 448 512", "M429.5 236.3L291.7 374.1 429.5 512 272 512c-36.1-36.1-82.1-82.1-137.9-137.9l137.9-137.8 157.5 0zM272 0L16 256 94.8 334.8 429.5 0 272 0z"], ["MySQL", "#00a3c4", "0 0 448 512", "M448 205.8c-14.8 9.8-31.8 17.7-49.5 24-47 16.8-108.7 26.2-174.5 26.2S96.4 246.5 49.5 229.8c-17.6-6.3-34.7-14.2-49.5-24L0 288c0 44.2 100.3 80 224 80s224-35.8 224-80l0-82.2zm0-77.8l0-48C448 35.8 347.7 0 224 0S0 35.8 0 80l0 48c0 44.2 100.3 80 224 80s224-35.8 224-80zM398.5 389.8C351.6 406.5 289.9 416 224 416S96.4 406.5 49.5 389.8c-17.6-6.3-34.7-14.2-49.5-24L0 432c0 44.2 100.3 80 224 80s224-35.8 224-80l0-66.2c-14.8 9.8-31.8 17.7-49.5 24z"], ["Firebase", "#ffca28", "0 0 384 512", "M153.6 29.9l16-21.3C173.6 3.2 180 0 186.7 0 198.4 0 208 9.6 208 21.3l0 22.1c0 13.1 5.4 25.7 14.9 34.7L307.6 159C356.4 205.6 384 270.2 384 337.7 384 434 306 512 209.7 512L192 512C86 512 0 426 0 320l0-3.8c0-48.8 19.4-95.6 53.9-130.1l3.5-3.5c4.2-4.2 10-6.6 16-6.6 12.5 0 22.6 10.1 22.6 22.6L96 288c0 35.3 28.7 64 64 64s64-28.7 64-64l0-3.9c0-18-7.2-35.3-19.9-48l-38.6-38.6c-24-24-37.5-56.7-37.5-90.7 0-27.7 9-54.8 25.6-76.9z"], ["Laravel", "#ff2d20", "0 0 512 512", "M504.6 115.8c-.1-.2-.2-.5-.3-.7-.1-.4-.3-.8-.5-1.2-.2-.2-.3-.5-.5-.7-.2-.3-.5-.6-.7-.9-.2-.2-.5-.4-.8-.6-.3-.2-.6-.5-.9-.7L404.6 55.5c-1.2-.7-2.6-1.1-4-1.1s-2.8 .4-4 1.1L300.3 111c-.3 .2-.6 .4-.9 .7-.3 .2-.5 .4-.8 .6-.3 .3-.5 .6-.7 .9-.2 .2-.4 .4-.5 .7-.2 .4-.4 .8-.5 1.2-.1 .2-.2 .4-.3 .7-.2 .7-.3 1.4-.3 2.1l0 105.2-80.2 46.2 0-205.9c0-.7-.1-1.4-.3-2.1-.1-.2-.2-.4-.3-.7-.1-.4-.3-.8-.5-1.2-.1-.3-.4-.5-.5-.7-.2-.3-.5-.6-.7-.9-.2-.2-.5-.4-.8-.6-.3-.2-.6-.5-.9-.7L115.8 1.1c-1.2-.7-2.6-1.1-4-1.1s-2.8 .4-4 1.1L11.5 56.5c-.3 .2-.6 .4-.9 .7-.3 .2-.5 .4-.8 .6-.3 .3-.5 .6-.7 .9-.2 .3-.4 .5-.6 .7-.2 .4-.4 .8-.5 1.2-.1 .2-.2 .4-.3 .7-.2 .7-.3 1.4-.3 2.1l0 329.7c0 1.4 .4 2.8 1.1 4s1.7 2.2 2.9 2.9L204 510.9c.4 .2 .9 .4 1.3 .5 .2 .1 .4 .2 .6 .3 1.3 .4 2.8 .4 4.1 0 .2-.1 .4-.2 .6-.2 .5-.2 1-.3 1.4-.6L404.6 400.1c1.2-.7 2.2-1.7 2.9-2.9s1.1-2.6 1.1-4l0-105.3 92.2-53.1c1.2-.7 2.2-1.7 2.9-3s1.1-2.6 1.1-4l0-109.8c0-.7-.1-1.4-.2-2.1zM111.8 17.3l80.2 46.1-80.2 46.2-80.2-46.2 80.2-46.2zm88.2 60l0 201.3c-33.2 19.1-59.9 34.5-80.2 46.2l0-201.3C153 104.4 179.7 89 200 77.3zm0 412.8L23.5 388.5 23.5 77.3c20.3 11.7 47.1 27.1 80.2 46.2l0 215.2c0 .3 .1 .6 .1 .9 0 .4 .1 .8 .2 1.2 .1 .3 .2 .6 .4 .9 .1 .3 .3 .7 .4 1 .2 .3 .4 .5 .6 .8 .2 .3 .4 .6 .7 .8 .2 .2 .5 .4 .8 .6 .3 .2 .6 .5 .9 .7l92.2 52.2 .1 92.4zm8-106.2L128 338.6c54.7-31.5 113.5-65.3 176.3-101.5l80.1 46.1C355 300 296.2 333.5 208 383.9zm184.5 4.6l-176.5 101.6 0-92.3C317.4 340 376.2 306.4 392.5 297l0 91.4zm0-119.1c-20.3-11.6-47.1-27-80.2-46.1l0-91.4c20.3 11.7 47.1 27.1 80.2 46.2l0 91.3zm8-105.3l-80.2-46.2 80.2-46.2 80.2 46.1-80.2 46.2zm8 105.3l0-91.3c33.2-19.1 60-34.5 80.3-46.2l0 91.4-80.3 46.2z"], ["Figma", "#a259ff", "0 0 384 512", "M14 95.8C14 42.9 56.9 0 109.8 0L274.2 0c52.9 0 95.8 42.9 95.8 95.8 0 33.5-17.2 63-43.2 80.1 26 17.1 43.2 46.6 43.2 80.1 0 52.9-42.9 95.8-95.8 95.8l-2.1 0c-24.8 0-47.4-9.4-64.4-24.9l0 88.3c0 53.6-44 96.8-97.4 96.8-52.8 0-96.3-42.8-96.3-95.8 0-33.5 17.2-63 43.2-80.1-26-17.1-43.2-46.6-43.2-80.1s17.2-63 43.2-80.1C31.2 158.8 14 129.3 14 95.8zm162.3 95.8l-66.5 0c-35.6 0-64.4 28.8-64.4 64.4 0 35.4 28.6 64.2 64 64.4l66.9 0 0-128.8zM207.7 256c0 35.6 28.8 64.4 64.4 64.4l2.1 0c35.6 0 64.4-28.8 64.4-64.4s-28.8-64.4-64.4-64.4l-2.1 0c-35.6 0-64.4 28.8-64.4 64.4zm-97.9 95.8l-.4 0c-35.4 .2-64 29-64 64.4s29.2 64.4 64.9 64.4c36.3 0 66-29.4 66-65.5l0-63.4-66.5 0zm0-320.4c-35.6 0-64.4 28.8-64.4 64.4s28.8 64.4 64.4 64.4l66.5 0 0-128.8-66.5 0zm97.9 128.8l66.5 0c35.6 0 64.4-28.8 64.4-64.4s-28.8-64.4-64.4-64.4l-66.5 0 0 128.8z"], ["VS Code", "#3ba4f5", "0 0 512 512", "M317.8 18.7c13.2 0-1.4-2.2 162.8 57 .7 .4 1.1 .4 1.8 .8 17.6 7.3 29.6 24.5 29.6 44.2l0 267c0 19.7-12.1 36.9-29.6 44.2-.4 0-1.1 .4-2.9 1.1L335 484.6c-5.5 2.2-11.3 3.3-17.2 3.3-16.8 0-31.8-8.8-40.2-22-.5-.5-6.2-10.3-10.2-16.1-1.1-1.5-1.8-2.9-2.9-4.4L92.5 155.5C81.9 137.2 64 125.8 44.2 122.9l92.2-45 .4-.4c6.2-2.9 13.5-4.8 20.8-4.8 16.1 0 30.3 8 39.1 20.1l0 .4 169 238.1 0-166-36.6 51.6-84.9-119.6 31.8-54.9c.7-.7 1.1-1.4 1.4-1.8 8.4-13.2 23.4-21.9 40.2-21.9zm-117 390.9l-4 5.5 0 .3c-8.8 12.1-23 20.1-39.1 20.1-7.3 0-14.6-1.8-20.8-4.7l-.4-.4-92.9-45c20.1-2.9 38-13.9 49-32.6l17.2-28.5 20.5-34.4 70.6 119.6zM24.1 159.1c11.7-2.9 27.8-.7 36.9 15l47.9 80.1-47.9 80.1c-6.9 12.1-17.5 16.5-27.4 16.5-3.3 0-6.6-.7-9.5-1.5-11.7-3.3-24.1-13.2-24.1-31.8L0 190.9c0-18.6 12.4-28.5 24.1-31.8z"], ["XAMPP", "#fb7a24", "0 0 448 512", "M64 32C28.7 32 0 60.7 0 96l0 64c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-64c0-35.3-28.7-64-64-64L64 32zm216 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm56 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zM64 288c-35.3 0-64 28.7-64 64l0 64c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-64c0-35.3-28.7-64-64-64L64 288zm216 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm56 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"]];
+document.getElementById('tgrid').innerHTML=TS.map(([n,c,vb,d])=>`<div class="tech glass" style="--c:${c}"><div class="logo"><svg viewBox="${vb}"><path d="${d}"/></svg></div><span>${n}</span></div>`).join('');
+
+/* ===== Contact + comments ===== */
+document.getElementById('cform').onsubmit=e=>{e.preventDefault();document.getElementById('cnote').style.display='block';e.target.reset()};
+let C=[];
+try{const s=JSON.parse(localStorage.getItem('ad-cmt-en')||'null');if(s)C=s}catch(e){}
+function rc2(){document.getElementById('ccount').textContent=`(${C.length})`;
+  document.getElementById('clist').innerHTML=C.length?'':'<p style="color:var(--muted);font-size:.85rem">No comments yet. Be the first!</p>';document.getElementById('clist').innerHTML+=C.map(c=>`<div class="cm"><div class="av">${c.n[0].toUpperCase()}</div><div><b>${c.n.replace(/</g,'&lt;')}</b><small>${c.t}</small><p>${c.m.replace(/</g,'&lt;')}</p></div></div>`).join('')}
+rc2();
+document.getElementById('kform').onsubmit=e=>{e.preventDefault();C.unshift({n:kname.value,m:kmsg.value,t:'just now'});try{localStorage.setItem('ad-cmt-en',JSON.stringify(C))}catch(e){}rc2();e.target.reset()};
+document.getElementById('yr').textContent=new Date().getFullYear();
+/* resume */
+const rm=document.getElementById('rmodal');
+document.getElementById('viewResume').onclick=()=>{rm.classList.add('open');rm.scrollTop=0;document.body.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>rm.classList.add('show')))};
+function closeR(){if(!rm.classList.contains('show'))return;rm.classList.remove('show');setTimeout(()=>{rm.classList.remove('open');document.body.style.overflow=''},450)}
+document.getElementById('rclose').onclick=closeR;rm.onclick=e=>{if(e.target===rm)closeR()};
+addEventListener('keydown',e=>{if(e.key==='Escape')closeR()});
+(async()=>{try{if(!window.claude||!claude.use)return;const dl=await claude.use('downloads');if(!dl)return;
+  const a=document.getElementById('dlResume'),note=document.getElementById('dlnote');
+  a.addEventListener('click',async e=>{e.preventDefault();note.textContent='';
+    try{const blob=await (await fetch('resume.pdf')).blob();await dl.save({filename:'Resume_Anniq_Darwisy.pdf',data:blob})}
+    catch(err){if(err&&err.code==='declined')return;note.textContent='Download is not available here. Use View Resume instead.'}});
+}catch(e){}})();
+function tick(){try{document.getElementById('clock').textContent=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Kuala_Lumpur'})}catch(e){}}tick();setInterval(tick,30000);
+</script>
+</body>
+</html>
