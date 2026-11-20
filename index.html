@@ -12,7 +12,7 @@
 :root{--bg:#05070f;--card:rgba(17,22,38,.6);--line:rgba(255,255,255,.08);--text:#eef1f8;--muted:#8b93a7;--blue:#3b82f6;--blue2:#60a5fa;--sky:#93c5fd}
 body.light{--bg:#eef2fa;--card:rgba(255,255,255,.75);--line:rgba(10,20,50,.1);--text:#0d1325;--muted:#5b647a}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;transition:background .4s,color .4s}
 a{color:inherit;text-decoration:none}
 #stars{position:fixed;inset:0;z-index:0;pointer-events:none}
@@ -60,12 +60,12 @@ body.light .hero p.lead{color:var(--muted)}
 #rope{position:absolute;inset:0;width:100%;height:100%}
 .idcard{position:absolute;left:0;top:0;width:230px;height:330px;cursor:grab;touch-action:none;user-select:none;perspective:900px;will-change:transform}
 .idcard.drag{cursor:grabbing}
-.flip{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,1.3,.5,1)}
+.flip{position:relative;width:100%;height:100%;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform .9s cubic-bezier(.65,0,.35,1)}
 .flip.back{transform:rotateY(180deg)}
-.face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;overflow:hidden;border:1px solid rgba(255,255,255,.18);
+.face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translateZ(.1px);overflow:hidden;border:1px solid rgba(255,255,255,.18);
   box-shadow:0 30px 60px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.3)}
 .face.f{background:linear-gradient(160deg,#e9ecf2,#c9d0dc)}
-.face.b{transform:rotateY(180deg);background:linear-gradient(160deg,#0f172a,#1e293b);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center}
+.face.b{transform:rotateY(180deg) translateZ(.1px);background:linear-gradient(160deg,#0f172a,#1e293b);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center}
 .hole{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:44px;height:9px;border-radius:6px;background:#0b0f1c;box-shadow:inset 0 2px 3px rgba(0,0,0,.6);z-index:3}
 .idtop{position:absolute;top:26px;left:0;right:0;white-space:nowrap;overflow:hidden;text-align:center;font-family:'Bebas Neue';font-size:2.4rem;letter-spacing:2px;color:#0b1220;line-height:1;z-index:2}
 .idside{position:absolute;right:-30px;top:150px;transform:rotate(90deg);font-family:'Bebas Neue';font-size:.85rem;white-space:nowrap;letter-spacing:3px;color:#0b1220;opacity:.85}
@@ -218,9 +218,69 @@ footer{border-top:1px solid var(--line);margin-top:60px}
   nav a{padding:8px 11px;font-size:.78rem}
   .hero{grid-template-columns:1fr;padding-top:110px;text-align:center}
   .hero p.lead{margin-left:auto;margin-right:auto}.cta,.findme{justify-content:center}
-  .lan{height:600px;margin-top:-30px;order:-1}
+  .lan{height:500px;margin-top:-20px;order:-1;overflow:hidden;width:100%}
+  .hero{gap:0;padding-left:20px;padding-right:20px}
+  .hero>div{min-width:0}
+  .lanhint{bottom:6px}
   .about,.cgrid,.dgrid{grid-template-columns:1fr}
   .aboutpic{max-width:340px;margin:auto}
+}
+
+/* ===== MUSIC ===== */
+.music{position:fixed;left:22px;bottom:22px;z-index:55;height:46px;padding:0 16px 0 12px;border-radius:30px;border:1px solid var(--line);background:rgba(15,19,33,.8);backdrop-filter:blur(12px);color:var(--text);display:flex;align-items:center;gap:10px;cursor:pointer;font-family:inherit;font-size:.8rem;font-weight:600;transition:.3s}
+body.light .music{background:rgba(255,255,255,.85)}
+.music:hover{border-color:rgba(96,165,250,.5)}
+.eq{display:flex;align-items:flex-end;gap:2px;height:16px;width:18px}
+.eq i{flex:1;background:var(--blue2);border-radius:2px;height:4px;transition:height .3s}
+.music.on .eq i{animation:eq 1s ease-in-out infinite}
+.music.on .eq i:nth-child(2){animation-delay:.2s}.music.on .eq i:nth-child(3){animation-delay:.45s}.music.on .eq i:nth-child(4){animation-delay:.1s}
+@keyframes eq{0%,100%{height:4px}50%{height:16px}}
+.music .mt{white-space:nowrap}
+/* ===== AI CHAT ===== */
+.aibtn{position:fixed;right:22px;bottom:22px;z-index:56;width:58px;height:58px;border-radius:50%;border:0;cursor:pointer;background:linear-gradient(135deg,#3b82f6,#6366f1);color:#fff;font-size:1.5rem;
+  box-shadow:0 10px 30px rgba(59,130,246,.45);display:flex;align-items:center;justify-content:center;transition:transform .3s}
+.aibtn:hover{transform:scale(1.07) rotate(-6deg)}
+.aibtn::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(96,165,250,.5);animation:ring 2.4s ease-out infinite}
+@keyframes ring{from{transform:scale(.9);opacity:1}to{transform:scale(1.35);opacity:0}}
+.aitip{position:fixed;right:90px;bottom:32px;z-index:56;background:rgba(15,19,33,.92);border:1px solid var(--line);color:var(--text);padding:10px 14px;border-radius:12px;font-size:.8rem;max-width:230px;backdrop-filter:blur(10px);
+  opacity:0;transform:translateX(10px);transition:.5s;pointer-events:none}
+body.light .aitip{background:rgba(255,255,255,.95)}
+.aitip.show{opacity:1;transform:none;pointer-events:auto;cursor:pointer}
+.aip{position:fixed;right:22px;bottom:92px;z-index:57;width:370px;max-width:calc(100vw - 24px);height:540px;max-height:calc(100vh - 120px);border-radius:20px;overflow:hidden;
+  background:rgba(10,14,26,.94);border:1px solid rgba(96,165,250,.22);backdrop-filter:blur(18px);box-shadow:0 30px 70px rgba(0,0,0,.55);display:flex;flex-direction:column;
+  opacity:0;transform:translateY(24px) scale(.94);transform-origin:bottom right;pointer-events:none;transition:opacity .35s,transform .45s cubic-bezier(.2,1.2,.4,1)}
+body.light .aip{background:rgba(255,255,255,.97)}
+.aip.open{opacity:1;transform:none;pointer-events:auto}
+.aih{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);background:linear-gradient(135deg,rgba(59,130,246,.18),rgba(99,102,241,.08))}
+.aih .av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#6366f1);display:flex;align-items:center;justify-content:center;font-size:1.1rem;position:relative}
+.aih .av::after{content:"";position:absolute;right:0;bottom:0;width:10px;height:10px;border-radius:50%;background:#4ade80;border:2px solid #0a0e1a}
+.aih b{display:block;font-size:.95rem}.aih small{color:var(--muted);font-size:.72rem}
+.aih button{margin-left:auto;background:none;border:0;color:var(--muted);font-size:1.1rem;cursor:pointer;width:32px;height:32px;border-radius:8px}
+.aih button:hover{background:rgba(255,255,255,.08);color:var(--text)}
+.aim{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+.bm{max-width:84%;padding:10px 14px;border-radius:16px;font-size:.86rem;line-height:1.55;animation:bin .35s ease;word-wrap:break-word}
+@keyframes bin{from{opacity:0;transform:translateY(8px)}}
+.bm.bot{align-self:flex-start;background:rgba(255,255,255,.06);border:1px solid var(--line);border-bottom-left-radius:4px}
+body.light .bm.bot{background:#eef2fa}
+.bm.me{align-self:flex-end;background:linear-gradient(135deg,#3b82f6,#4f46e5);color:#fff;border-bottom-right-radius:4px}
+.bm a{color:var(--blue2)}
+.dots{display:inline-flex;gap:4px}.dots i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:dt 1s infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes dt{0%,100%{opacity:.3;transform:none}50%{opacity:1;transform:translateY(-3px)}}
+.aiq{display:flex;gap:6px;overflow-x:auto;padding:0 16px 10px;scrollbar-width:none}
+.aiq::-webkit-scrollbar{display:none}
+.aiq button{flex-shrink:0;padding:6px 12px;border-radius:20px;border:1px solid rgba(96,165,250,.3);background:rgba(59,130,246,.08);color:var(--sky);font-family:inherit;font-size:.74rem;cursor:pointer}
+body.light .aiq button{color:var(--blue)}
+.aif{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+.aif input{margin:0;flex:1;padding:11px 14px;border-radius:12px;font-size:.86rem}
+.aif button{width:44px;border-radius:12px;border:0;background:var(--blue);color:#fff;cursor:pointer;font-size:1rem}
+.aif button:disabled{opacity:.5}
+.aimode{font-size:.66rem;color:var(--muted);text-align:center;padding:0 0 8px}
+@media(max-width:600px){
+  .music{left:14px;bottom:14px;height:42px;padding:0 12px}.music .mt{display:none}
+  .aibtn{right:14px;bottom:14px;width:52px;height:52px}
+  .aitip{right:76px;bottom:20px;max-width:180px}
+  .aip{right:12px;left:12px;width:auto;bottom:78px;height:calc(100vh - 110px)}
 }
 </style>
 </head>
@@ -273,7 +333,7 @@ footer{border-top:1px solid var(--line);margin-top:60px}
         </div>
       </div>
     </div>
-    <div class="lanhint">⟵ Drag the card · double-click to flip ⟶</div>
+    <div class="lanhint">⟵ Drag the card · tap to flip ⟶</div>
   </div>
 </section>
 
@@ -374,6 +434,20 @@ footer{border-top:1px solid var(--line);margin-top:60px}
 <div class="detail" id="detail"></div>
 <div class="rmodal" id="rmodal"><button class="rclose" id="rclose" aria-label="Close">✕</button><span class="rtag">RESUME · ANNIQ DARWISY</span><div class="sheet"><img src="resume.jpg" alt="Resume of Anniq Darwisy"></div></div>
 
+
+<!-- MUSIC -->
+<button class="music" id="music" aria-label="Background music"><span class="eq"><i></i><i></i><i></i><i></i></span><span class="mt" id="mt">Play music</span></button>
+<!-- AI CHAT -->
+<div class="aitip" id="aitip">👋 Hi! I'm <b>ssup</b>, Anniq's AI assistant. Ask me anything!</div>
+<button class="aibtn" id="aibtn" aria-label="Chat with ssup">✦</button>
+<div class="aip" id="aip" role="dialog" aria-label="Chat with ssup">
+  <div class="aih"><div class="av">✦</div><div><b>ssup</b><small>Anniq's AI assistant · online</small></div><button id="aiclose" aria-label="Close">✕</button></div>
+  <div class="aim" id="aim"></div>
+  <div class="aiq" id="aiq"><button>Who is Anniq?</button><button>What are his skills?</button><button>Tell me about SPARK</button><button>Is he open for internship?</button><button>How to contact him?</button></div>
+  <form class="aif" id="aif"><input id="aiin" placeholder="Ask about Anniq..." autocomplete="off" maxlength="400"><button id="aisend" aria-label="Send">➤</button></form>
+  <div class="aimode" id="aimode"></div>
+</div>
+
 <!-- Tech icons: Font Awesome Free (CC BY 4.0) https://fontawesome.com -->
 <script>
 /* ===== Stars + shooting stars ===== */
@@ -400,15 +474,15 @@ const R=['Web Developer','UI/UX Designer','Computer Technology Student','Laravel
 
 /* ===== Lanyard physics (verlet rope + card) ===== */
 const lan=document.getElementById('lan'),rc=document.getElementById('rope'),rx=rc.getContext('2d'),card=document.getElementById('card'),flip=document.getElementById('flip'),shine=document.getElementById('shine');
-const N=14;let P=[],SEG=17,W,H,dragging=false,mx=0,my=0,lastX=0,spin=0;
+const N=14;let AX=0,MOB=false,P=[],SEG=17,W,H,gx=0,gy=0,downX=0,downY=0,downT=0,moved=false,dragging=false,mx=0,my=0,lastX=0,spin=0;
 function setup(){
   W=lan.clientWidth;H=lan.clientHeight;rc.width=W*devicePixelRatio;rc.height=H*devicePixelRatio;rx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
-  SEG=Math.min(19,(H*.42)/N);const ax=W*.55;
+  MOB=innerWidth<900;SEG=MOB?(H*.2)/N:Math.min(19,(H*.42)/N);AX=MOB?W*.5:W*.55;const ax=AX;
   P=Array.from({length:N},(_,i)=>({x:ax+i*9,y:-10+i*SEG*.6,ox:ax+i*9-4,oy:-10+i*SEG*.6}));
 }
 setup();addEventListener('resize',setup);
 function step(){
-  const ax=W*.55;P[0].x=ax;P[0].y=-10;
+  const ax=AX;P[0].x=ax;P[0].y=-10;
   for(let i=1;i<N;i++){const p=P[i];const vx=(p.x-p.ox)*.985,vy=(p.y-p.oy)*.985;p.ox=p.x;p.oy=p.y;p.x+=vx;p.y+=vy+(i===N-1?.9:.5)}
   if(dragging){const e=P[N-1];e.x=mx;e.y=my}
   for(let k=0;k<24;k++){
@@ -437,10 +511,13 @@ function step(){
 }
 step();
 function pt(ev){const r=lan.getBoundingClientRect();return[ev.clientX-r.left,ev.clientY-r.top-14]}
-card.addEventListener('pointerdown',e=>{dragging=true;card.classList.add('drag');card.setPointerCapture(e.pointerId);[mx,my]=pt(e)});
-card.addEventListener('pointermove',e=>{if(dragging)[mx,my]=pt(e)});
-card.addEventListener('pointerup',()=>{dragging=false;card.classList.remove('drag');const e=P[N-1];e.ox=e.x-(mx-e.x)*.1});
-card.addEventListener('dblclick',()=>flip.classList.toggle('back'));
+card.addEventListener('pointerdown',e=>{const [px,py]=pt(e),end=P[N-1];gx=px-end.x;gy=py-end.y;mx=end.x;my=end.y;
+  downX=e.clientX;downY=e.clientY;downT=performance.now();moved=false;dragging=true;card.classList.add('drag');card.setPointerCapture(e.pointerId)});
+card.addEventListener('pointermove',e=>{if(!dragging)return;if(Math.hypot(e.clientX-downX,e.clientY-downY)>6)moved=true;if(!moved)return;const [px,py]=pt(e);mx=px-gx;my=py-gy});
+function release(e){if(!dragging)return;dragging=false;card.classList.remove('drag');
+  if(!moved&&performance.now()-downT<400){flip.classList.toggle('back');spin+=flip.classList.contains('back')?14:-14}
+  else{const end=P[N-1];end.ox=end.x-(mx-end.x)*.1}}
+card.addEventListener('pointerup',release);card.addEventListener('pointercancel',release);
 
 /* QR-ish pattern on card back */
 (function(){const q=document.getElementById('qr');let s='';const f=(x,y)=>`<rect x="${x}" y="${y}" width="7" height="7" fill="#0b1220"/><rect x="${x+1}" y="${y+1}" width="5" height="5" fill="#fff"/><rect x="${x+2}" y="${y+2}" width="3" height="3" fill="#0b1220"/>`;
@@ -512,6 +589,107 @@ addEventListener('keydown',e=>{if(e.key==='Escape')closeR()});
     catch(err){if(err&&err.code==='declined')return;note.textContent='Download is not available here. Use View Resume instead.'}});
 }catch(e){}})();
 function tick(){try{document.getElementById('clock').textContent=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Kuala_Lumpur'})}catch(e){}}tick();setInterval(tick,30000);
+
+/* ===================== BACKGROUND MUSIC (generated live, no file needed) ===================== */
+(function(){
+  const btn=document.getElementById('music'),mt=document.getElementById('mt');let ac=null,master=null,on=false,timers=[];
+  function impulse(ctx,sec){const r=ctx.sampleRate,len=r*sec,b=ctx.createBuffer(2,len,r);for(let c=0;c<2;c++){const d=b.getChannelData(c);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.6)}return b}
+  const hz=n=>440*Math.pow(2,(n-69)/12);
+  const CH=[[48,55,64,71],[45,52,60,67],[41,48,57,64],[43,50,59,64]]; // Cmaj7 Am7 Fmaj7 G
+  const PENTA=[72,74,76,79,81,84,86,88];
+  function build(){
+    ac=new (window.AudioContext||window.webkitAudioContext)();
+    master=ac.createGain();master.gain.value=0;
+    const comp=ac.createDynamicsCompressor();master.connect(comp);comp.connect(ac.destination);
+    const rev=ac.createConvolver();rev.buffer=impulse(ac,4.5);const wet=ac.createGain();wet.gain.value=.55;rev.connect(wet);wet.connect(master);
+    const lp=ac.createBiquadFilter();lp.type='lowpass';lp.frequency.value=900;lp.Q.value=.6;lp.connect(master);lp.connect(rev);
+    const lfo=ac.createOscillator(),lg=ac.createGain();lfo.frequency.value=.05;lg.gain.value=350;lfo.connect(lg);lg.connect(lp.frequency);lfo.start();
+    let ci=0;
+    function chord(){if(!on)return;const t=ac.currentTime,dur=9;
+      CH[ci%CH.length].forEach((n,k)=>{[0,7].forEach(det=>{const o=ac.createOscillator(),g=ac.createGain();o.type=k===0?'sine':'triangle';o.frequency.value=hz(n);o.detune.value=det-3;
+        g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(k===0?.085:.04,t+3);g.gain.linearRampToValueAtTime(0,t+dur+2);o.connect(g);g.connect(lp);o.start(t);o.stop(t+dur+2.2)})});
+      ci++;timers.push(setTimeout(chord,dur*1000))}
+    function sparkle(){if(!on)return;const t=ac.currentTime,o=ac.createOscillator(),g=ac.createGain(),n=PENTA[Math.floor(Math.random()*PENTA.length)];
+      o.type='sine';o.frequency.value=hz(n);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.035,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+2.4);
+      o.connect(g);g.connect(rev);g.connect(master);o.start(t);o.stop(t+2.5);timers.push(setTimeout(sparkle,1200+Math.random()*2600))}
+    build.start=()=>{chord();timers.push(setTimeout(sparkle,2500))};
+  }
+  function play(){if(!ac)build();ac.resume();on=true;build.start();master.gain.cancelScheduledValues(ac.currentTime);master.gain.setValueAtTime(master.gain.value,ac.currentTime);master.gain.linearRampToValueAtTime(.55,ac.currentTime+3);
+    btn.classList.add('on');mt.textContent='Music on'}
+  function stop(){on=false;timers.forEach(clearTimeout);timers=[];if(ac){master.gain.cancelScheduledValues(ac.currentTime);master.gain.setValueAtTime(master.gain.value,ac.currentTime);master.gain.linearRampToValueAtTime(0,ac.currentTime+1.2);setTimeout(()=>{if(!on)ac.suspend()},1300)}
+    btn.classList.remove('on');mt.textContent='Play music'}
+  btn.onclick=()=>{try{on?stop():play()}catch(e){mt.textContent='Not supported'}};
+})();
+
+/* ===================== NOVA — AI CHAT ===================== */
+(function(){
+  const FACTS=`Name: Anniq Darwisy bin Amrin. Brand/website: Anniq.dev (https://isymars.github.io).
+Status: Diploma in Computer Technology student at Kuala Selangor Vocational College (KV Kuala Selangor), Selangor, Malaysia, 2025-2027, current CGPA 3.71. Previously Sijil Vokasional Malaysia (SVM) in Database Management and Web System Development, 2023-2025, CGPA 3.42.
+Currently seeking an internship to gain industry experience.
+Interests: web development, database management, software development, UI/UX design.
+Technical skills: HTML, CSS, JavaScript, PHP, Java, Dart, Flutter, MySQL, Firebase, Laravel, Figma, VS Code, XAMPP.
+Personal skills: leadership and team management, problem-solving, communication, adaptability, continuous learning.
+Experience: Warehouse Assistant at Rurutiki Sdn Bhd (2024-2026): receiving, inspecting and organising incoming inventory; coordinating picking, packing and preparing goods for shipment; keeping the warehouse organised with proper storage procedures.
+Projects: (1) SPARK - Student Permission and Residence Keeping: a mobile app that manages hostel permission applications and student movements digitally, with student applications, warden approval, QR code generation and scanning, and automated entry/exit records using Firebase. (2) CodeFusion - Interactive Learning Website: educational website with digital learning materials, programming notes and educational games. (3) Anniq.dev - this space-themed portfolio with an interactive draggable lanyard ID card.
+Achievements: developed SPARK and took part in an innovation programme/competition; Head of Hostel Student Council; represented the college in volleyball for 4 years, including national level.
+Contact: email anniqdarwisyamrin7@gmail.com; GitHub isymars; Instagram anniqszn; TikTok ssup; LinkedIn ANNIQ DARWISY BIN AMRIN. Resume can be downloaded or viewed in the About section.`;
+  const SYS=`You are ssup, a friendly AI assistant on the portfolio website of Anniq Darwisy. Answer visitors' questions about Anniq using ONLY the facts below. Keep answers short (1-3 sentences, max ~70 words), warm and professional. Reply in the visitor's language (English or Malay). If something isn't in the facts, say you don't know and suggest emailing Anniq. Never invent details. Never share a home address or anyone's phone number. If asked to do unrelated tasks, politely steer back to Anniq. Plain text only, no markdown.\n\nFACTS:\n${FACTS}`;
+  const $=id=>document.getElementById(id);
+  const panel=$('aip'),msgs=$('aim'),form=$('aif'),inp=$('aiin'),send=$('aisend'),tip=$('aitip'),mode=$('aimode');
+  let hist=[],busy=false,ai=null,greeted=false;
+  (async()=>{try{if(window.claude&&claude.use){ai=await claude.use('sample')}}catch(e){ai=null}setMode()})();
+  function setMode(){mode.textContent=ai?'Powered by Claude · answers may be imperfect':'Smart assistant · answers from Anniq’s profile'}
+  setMode();
+  function esc(t){return t.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+  function link(t){return esc(t).replace(/(https?:\/\/[^\s]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>').replace(/([\w.]+@[\w.]+\.\w+)/g,'<a href="mailto:$1">$1</a>')}
+  function bubble(t,who){const d=document.createElement('div');d.className='bm '+who;d.innerHTML=who==='bot'?link(t):esc(t);msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d}
+  function typing(){const d=document.createElement('div');d.className='bm bot';d.innerHTML='<span class="dots"><i></i><i></i><i></i></span>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d}
+  function open(){panel.classList.add('open');tip.classList.remove('show');
+    if(!greeted){greeted=true;const d=typing();setTimeout(()=>{d.remove();bubble("Hi there! I'm ssup ✦ Ask me anything about Anniq: his studies, skills, projects or how to reach him. You can ask in English or Malay!",'bot')},700)}
+    setTimeout(()=>inp.focus(),350)}
+  function close(){panel.classList.remove('open')}
+  $('aibtn').onclick=()=>panel.classList.contains('open')?close():open();
+  $('aiclose').onclick=close;tip.onclick=open;
+  addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+  setTimeout(()=>{if(!panel.classList.contains('open'))tip.classList.add('show')},4000);
+  setTimeout(()=>tip.classList.remove('show'),14000);
+
+  /* ---- local brain (works anywhere, e.g. GitHub Pages) ---- */
+  const KB=[
+    {k:['ssup','are you','you are','your name','who are you','kau siapa','awak siapa','nama kau','nama awak'],a:{en:"I'm ssup ✦, Anniq's AI assistant on this site. Ask me about his studies, skills, projects or how to reach him!",ms:"Saya ssup ✦, pembantu AI Anniq di website ini. Tanya saya tentang pendidikan, kemahiran, projek atau cara hubungi dia!"}},
+    {k:['who','anniq','about','yourself','introduce','siapa','tentang','kenal'],a:{en:"Anniq Darwisy bin Amrin is a Diploma in Computer Technology student at Kuala Selangor Vocational College, Selangor. He's passionate about web development, database management and software development.",ms:"Anniq Darwisy bin Amrin ialah pelajar Diploma Teknologi Komputer di Kolej Vokasional Kuala Selangor. Dia minat pembangunan web, pengurusan pangkalan data dan pembangunan perisian."}},
+    {k:['skill','skills','tech','stack','language','languages','know','tools','kemahiran','bahasa','teknologi','pandai'],a:{en:"Anniq works with HTML, CSS, JavaScript, PHP, Java, Dart, Flutter, MySQL, Firebase, Laravel, Figma, VS Code and XAMPP. He also brings leadership, problem-solving and communication skills.",ms:"Anniq mahir HTML, CSS, JavaScript, PHP, Java, Dart, Flutter, MySQL, Firebase, Laravel, Figma, VS Code dan XAMPP, serta kemahiran kepimpinan dan penyelesaian masalah."}},
+    {k:['spark','hostel','permission','qr','asrama'],a:{en:"SPARK (Student Permission and Residence Keeping) is a mobile app Anniq built to manage hostel permission applications digitally, with warden approval, QR code generation and scanning, and automated entry/exit records using Firebase.",ms:"SPARK ialah aplikasi mudah alih untuk urus permohonan kebenaran asrama secara digital, dengan kelulusan warden, kod QR dan rekod keluar masuk automatik menggunakan Firebase."}},
+    {k:['codefusion','learning','education','games','website project','pembelajaran'],a:{en:"CodeFusion is an interactive learning website by Anniq, with digital learning materials, programming notes and educational games to make learning more engaging.",ms:"CodeFusion ialah laman web pembelajaran interaktif dengan bahan digital, nota pengaturcaraan dan permainan pendidikan."}},
+    {k:['project','projects','portfolio','built','work','made','projek','buat'],a:{en:"His main projects are SPARK (a hostel permission mobile app with QR codes and Firebase), CodeFusion (an interactive learning website) and this Anniq.dev portfolio. Check the Portfolio section for details!",ms:"Projek utama Anniq: SPARK (aplikasi kebenaran asrama), CodeFusion (laman web pembelajaran interaktif) dan portfolio Anniq.dev ini. Lihat bahagian Portfolio!"}},
+    {k:['study','studies','education','college','diploma','cgpa','school','kv','svm','belajar','kolej','pendidikan'],a:{en:"Anniq is pursuing a Diploma in Computer Technology at KV Kuala Selangor (2025–2027) with a CGPA of 3.71. Before that he completed SVM in Database Management and Web System Development (CGPA 3.42).",ms:"Anniq sedang mengikuti Diploma Teknologi Komputer di KV Kuala Selangor (2025–2027) dengan CGPA 3.71. Sebelum itu SVM Pengurusan Pangkalan Data dan Pembangunan Sistem Web (CGPA 3.42)."}},
+    {k:['experience','job','worked','warehouse','rurutiki','pengalaman','kerja'],a:{en:"Anniq worked as a Warehouse Assistant at Rurutiki Sdn Bhd (2024–2026), handling inventory receiving and inspection, picking and packing for shipment, and keeping the warehouse organised.",ms:"Anniq pernah bekerja sebagai Warehouse Assistant di Rurutiki Sdn Bhd (2024–2026), menguruskan inventori, pembungkusan dan penyusunan gudang."}},
+    {k:['intern','internship','hire','hiring','available','opportunity','latihan','praktikal','ambil'],a:{en:"Yes! Anniq is currently looking for an internship to gain industry experience. You can reach him at anniqdarwisyamrin7@gmail.com.",ms:"Ya! Anniq sedang mencari tempat latihan industri. Hubungi dia di anniqdarwisyamrin7@gmail.com."}},
+    {k:['achievement','achievements','award','volleyball','council','leader','pencapaian','anugerah','bola tampar'],a:{en:"Anniq developed SPARK for an innovation programme, served as Head of the Hostel Student Council, and represented his college in volleyball for 4 years, including at national level.",ms:"Anniq membangunkan SPARK untuk program inovasi, menjadi Ketua Majlis Perwakilan Pelajar Asrama, dan mewakili kolej dalam bola tampar selama 4 tahun termasuk peringkat kebangsaan."}},
+    {k:['contact','email','reach','instagram','github','tiktok','linkedin','social','hubungi','emel'],a:{en:"You can email Anniq at anniqdarwisyamrin7@gmail.com, or find him on GitHub (isymars), Instagram (anniqszn), TikTok (ssup) and LinkedIn (Anniq Darwisy bin Amrin).",ms:"Emel Anniq di anniqdarwisyamrin7@gmail.com, atau cari dia di GitHub (isymars), Instagram (anniqszn), TikTok (ssup) dan LinkedIn."}},
+    {k:['resume','cv'],a:{en:"You can view or download Anniq's resume in the About section, using the View Resume or Download Resume button.",ms:"Resume Anniq boleh dilihat atau dimuat turun di bahagian About Me."}},
+    {k:['where','location','live','from','mana','duduk','tinggal'],a:{en:"Anniq is based in Selangor, Malaysia, and studies at KV Kuala Selangor.",ms:"Anniq berada di Selangor, Malaysia, dan belajar di KV Kuala Selangor."}},
+    {k:['figma','ui','ux','design','reka'],a:{en:"Yes, Anniq designs user-friendly interfaces in Figma before building them in code.",ms:"Ya, Anniq mereka antara muka di Figma sebelum membinanya dalam kod."}},
+    {k:['hi','hello','hey','hai','helo','salam','assalamualaikum'],a:{en:"Hi! 😊 What would you like to know about Anniq?",ms:"Hai! 😊 Apa yang anda nak tahu tentang Anniq?"}},
+    {k:['thanks','thank','tq','terima kasih'],a:{en:"You're welcome! Have a great day ✦",ms:"Sama-sama! Semoga hari anda menyeronokkan ✦"}},
+  ];
+  const MS=/\b(apa|siapa|macam|mana|boleh|dia|ke|tak|nak|tentang|kemahiran|projek|hubungi|belajar|kerja|pengalaman|bagaimana|berapa|ada|saya|awak|anda|tu|ni|pencapaian)\b/i;
+  function local(q){const t=q.toLowerCase(),lang=MS.test(t)?'ms':'en';let best=null,score=0;
+    for(const it of KB){let sc=0;for(const k of it.k){if(k.includes(' ')?t.includes(k):new RegExp('\\b'+k).test(t))sc+=k.length>3?2:1}if(sc>score){score=sc;best=it}}
+    if(best)return best.a[lang];
+    return lang==='ms'?"Maaf, saya belum ada jawapan untuk itu. Cuba tanya tentang kemahiran, projek, pendidikan atau cara hubungi Anniq, atau emel dia di anniqdarwisyamrin7@gmail.com.":"Sorry, I don't have an answer for that yet. Try asking about Anniq's skills, projects, studies or how to contact him, or email him at anniqdarwisyamrin7@gmail.com."}
+
+  async function ask(q){q=q.trim();if(!q||busy)return;busy=true;send.disabled=true;bubble(q,'me');hist.push({role:'user',content:q});
+    const t=typing();let answer='';
+    if(ai){try{let d=null;const r=await ai([{role:'user',content:SYS+'\n\nConversation so far follows. Answer the last visitor message.'},{role:'assistant',content:'Understood. I will answer as ssup using only those facts.'},...hist.slice(-7)],
+        {modelTier:'quick',cache:false,onText:({text})=>{if(!text||text==='Thinking...')return;if(!d){t.remove();d=bubble('','bot')}d.innerHTML=link(text);msgs.scrollTop=msgs.scrollHeight}});
+        answer=(r&&r.text)||'';if(!d){t.remove();d=bubble(answer,'bot')}else d.innerHTML=link(answer)}
+      catch(e){if(e&&e.code==='not_granted'){ai=null;setMode()}answer=local(q);t.remove();bubble(answer,'bot')}}
+    else{await new Promise(r=>setTimeout(r,550+Math.random()*450));answer=local(q);t.remove();bubble(answer,'bot')}
+    hist.push({role:'assistant',content:answer});busy=false;send.disabled=false;inp.focus()}
+  form.onsubmit=e=>{e.preventDefault();const v=inp.value;inp.value='';ask(v)};
+  document.querySelectorAll('#aiq button').forEach(b=>b.onclick=()=>ask(b.textContent));
+})();
 </script>
 </body>
 </html>
