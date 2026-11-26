@@ -7,7 +7,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%2305070f%27/%3E%3Ctext x=%2732%27 y=%2744%27 font-family=%27Arial%27 font-weight=%27800%27 font-size=%2732%27 text-anchor=%27middle%27 fill=%27%2360a5fa%27%3EA.%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#05070f;--card:rgba(17,22,38,.6);--line:rgba(255,255,255,.08);--text:#eef1f8;--muted:#8b93a7;--blue:#3b82f6;--blue2:#60a5fa;--sky:#93c5fd}
 body.light{--bg:#eef2fa;--card:rgba(255,255,255,.75);--line:rgba(10,20,50,.1);--text:#0d1325;--muted:#5b647a}
@@ -363,94 +363,6 @@ body.light .eyebrow{color:var(--blue)}
 body.light .hero h1 .g{color:var(--blue)}
 body.light{--blue2:#2563eb;--sky:#1d4ed8}
 body.light .cc small,body.light .ccb .by{opacity:1}
-
-/* ===================== HUMAN PASS ===================== */
-:root{--bg:#0b0d12;--card:#12151c;--line:#23272f;--text:#e9e7e2;--muted:#9a9890;--blue:#8aa4ff;--blue2:#8aa4ff;--sky:#8aa4ff}
-body.light{--bg:#f5f3ee;--card:#ffffff;--line:#e2ded5;--text:#1c1b19;--muted:#6b6860;--blue:#2c47c9;--blue2:#2c47c9;--sky:#2c47c9}
-body{font-family:'IBM Plex Sans',system-ui,sans-serif;letter-spacing:0}
-body::before{opacity:.35}
-#stars{opacity:.55}body.light #stars{opacity:.35}
-h1,h2,.fsay,.dgrid h1{font-family:'Instrument Serif',Georgia,serif!important;font-weight:400!important;letter-spacing:-.5px!important}
-.glass,.cbox,.proj,.cc,.cert,.ach,.tech,.visa,.awbox,.cert-th{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important;background:var(--card)!important;border:1px solid var(--line)!important;border-radius:8px!important}
-.proj:hover,.cc:hover,.tech:hover,.cert-th:hover{transform:none!important;box-shadow:none!important;border-color:var(--muted)!important}
-.cc:hover .ccimg img,.proj:hover .mock.shot img{transform:none}
-.btn{border-radius:6px!important;box-shadow:none!important;font-weight:500!important}
-.btn.pri{background:var(--text)!important;border-color:var(--text)!important;color:var(--bg)!important}
-.btn.pri:hover{transform:none!important;opacity:.85}
-nav{background:var(--bg)!important;border:1px solid var(--line)!important;border-radius:8px!important;backdrop-filter:none!important}
-nav a{border-radius:5px!important;font-size:.84rem!important}
-nav a.on{background:var(--line)!important}
-/* hero */
-.hero h1{font-size:clamp(3.2rem,8vw,6rem)!important;line-height:.95!important;margin:0 0 18px}
-.kicker,.status,.findme,.shead span,.facts dt,.cchip,.ccb .by,.fend,.aimode{font-family:'IBM Plex Mono',monospace!important}
-.kicker{font-size:.75rem;color:var(--muted);letter-spacing:.5px;margin-bottom:18px}
-.role-line{font-size:1.15rem;line-height:1.55;max-width:520px;color:var(--text);margin-bottom:14px}
-.status{font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:8px;margin-bottom:26px}
-.status .dot{width:7px;height:7px;border-radius:50%;background:#5bb974}
-.hero p.lead{color:var(--muted)!important;font-size:.95rem!important}
-.hero p.lead b{color:var(--text);font-weight:500}
-.findme{letter-spacing:0!important;font-size:.75rem!important;text-transform:none}
-.findme a{border-radius:6px!important}
-/* section heads */
-.sec{padding-top:90px!important}
-.shead{display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:40px}
-.shead span{font-size:.8rem;color:var(--muted)}
-.shead h2{font-size:clamp(2.2rem,4vw,3rem)!important;margin:0!important;text-align:left!important}
-.sec h2{text-align:left}
-/* about */
-.aboutpic{border-radius:6px!important}
-.facts{display:grid;grid-template-columns:110px 1fr;gap:10px 18px;margin:26px 0 30px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.facts div{display:contents}
-.facts dt{font-size:.74rem;color:var(--muted);padding-top:2px}
-.facts dd{font-size:.92rem}
-/* tabs */
-.tabs{justify-content:flex-start!important;gap:0!important;border-bottom:1px solid var(--line);margin-bottom:30px!important}
-.tab{background:none!important;border:0!important;border-radius:0!important;padding:10px 16px!important;color:var(--muted)!important;border-bottom:2px solid transparent!important;margin-bottom:-1px}
-.tab.on{color:var(--text)!important;border-bottom-color:var(--text)!important}
-.tab .i{display:none}
-.cfil{justify-content:flex-start!important}
-.cfil button{border-radius:5px!important}
-.cfil button.on{background:var(--line)!important;border-color:var(--line)!important}
-/* cards */
-.mock{border-radius:5px!important}
-.proj h4,.ccb h4,.ach h4,.cert h4{font-weight:600}
-.role{border-radius:4px!important;font-weight:600!important}
-.awd{border-radius:4px!important}
-.cchip{border-radius:3px!important;font-weight:500!important;letter-spacing:0!important;text-transform:none!important;font-size:.68rem!important}
-.cchip.award{background:#c9a85c!important}.cchip.recog{background:#b4443b!important}.cchip.committee{background:#3a55b8!important}.cchip.learn{background:#2f7d5c!important;color:#fff!important}
-.ccimg{background:#0e1118!important}
-.zoom{display:none}
-.ic{border-radius:6px!important}
-.det{border-radius:5px!important}
-/* contact */
-.cwrap{display:grid;grid-template-columns:1fr 1.3fr;gap:40px;align-items:start}
-.cside p{color:var(--muted);line-height:1.7}
-.cside .small{font-size:.85rem;margin-top:18px}
-.cmail{display:inline-block;margin-top:10px;font-size:1.15rem;color:var(--text);border-bottom:1px solid var(--muted);padding-bottom:2px}
-.cmail:hover{border-color:var(--text)}
-.cbox{padding:22px!important}
-input,textarea{border-radius:5px!important;background:var(--bg)!important}
-/* footer */
-.fsay{font-size:clamp(1.8rem,3.6vw,2.6rem)!important}
-.fmail{border-bottom-width:1px!important;font-weight:500!important}
-.fsoc a{border-radius:5px!important}
-/* misc */
-.music{border-radius:6px!important;backdrop-filter:none!important;background:var(--card)!important}
-.aibtn{background:var(--text)!important;color:var(--bg)!important;box-shadow:none!important;width:50px!important;height:50px!important}
-.aip{border-radius:10px!important;backdrop-filter:none!important;background:var(--card)!important;border-color:var(--line)!important}
-.aih{background:none!important}
-.aih .av{background:var(--line)!important;color:var(--text)}
-.bm{border-radius:10px!important}.bm.me{background:var(--text)!important;color:var(--bg)!important}
-.aiq button{border-radius:5px!important;background:none!important;border-color:var(--line)!important;color:var(--muted)!important}
-.aif button{background:var(--text)!important;color:var(--bg)!important;border-radius:6px!important}
-.rclose{border-radius:6px!important}
-.sheet{border-radius:4px!important}
-.sheet::after{display:none}
-.rtag{letter-spacing:.5px!important;font-family:'IBM Plex Mono',monospace}
-.reveal{transform:none!important;transition:opacity .6s!important}
-body.light::before{opacity:.12}
-.about{align-items:start!important}
-@media(max-width:900px){.cwrap{grid-template-columns:1fr}.hero{text-align:left!important}.hero .cta,.hero .findme{justify-content:flex-start!important}.facts{grid-template-columns:90px 1fr}}
 </style>
 </head>
 <body>
@@ -464,18 +376,16 @@ body.light::before{opacity:.12}
 <!-- HERO -->
 <section class="hero" id="home">
   <div>
-    <p class="kicker">Portfolio · 2026</p>
-    <h1>Anniq Darwisy</h1>
-    <p class="role-line">Computer Technology student at KV Kuala Selangor. I build web and mobile apps, mostly with Laravel and Flutter.</p>
-    <p class="status"><span class="dot"></span>Looking for an internship placement</p>
-    <div class="typed" hidden><span id="typed"></span></div>
+    <div class="avail"><span></span>Open for internship</div>
+    <h1><span class="g">Welcome to</span><br>My Portfolio</h1>
+    <div class="typed"><span id="typed"></span><i></i></div>
     <p class="lead">Driven by curiosity and a passion for technology, I'm <b>Anniq Darwisy</b>, a Computer Technology student with a strong interest in <b>web development</b>, <b>database management</b>, and <b>software development</b>.</p>
     <p class="lead" style="margin-top:12px">I enjoy transforming creative ideas into functional digital solutions, from designing user-friendly interfaces to developing interactive websites and applications. My goal is to create innovative, efficient, and meaningful digital experiences through technology.</p>
     <div class="cta">
       <a href="#portfolio" class="btn pri">View Projects <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a href="mailto:anniqdarwisyamrin7@gmail.com" class="btn">Email me</a>
+      <a href="#contact" class="btn">Contact Me</a>
     </div>
-    <div class="findme">Elsewhere
+    <div class="findme">FIND ME
       <a href="https://github.com/isymars" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></a>
       <a href="https://instagram.com/anniqszn" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg></a>
       <a href="https://www.tiktok.com/@ssup" title="TikTok"><svg viewBox="0 0 24 24"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.4a2.9 2.9 0 1 1-2-2.7V9.2a6.3 6.3 0 1 0 5.4 6.2V8.6a8.2 8.2 0 0 0 4.8 1.5V6.8z"/></svg></a>
@@ -510,19 +420,18 @@ body.light::before{opacity:.12}
 
 <!-- ABOUT -->
 <section class="sec" id="about">
-  <div class="shead reveal"><span>01</span><h2>About</h2></div>
+  <span class="eyebrow reveal">01 · About</span><h2 class="reveal" style="margin-bottom:48px">About Me</h2>
     <div class="about">
     <div class="aboutpic reveal"><img src="about3.jpg" alt="Anniq Darwisy"></div>
     <div class="reveal">
-      
+      <h3>Hi, I'm <span>Anniq Darwisy</span>.</h3>
       <p>Hello! My name is Anniq Darwisy bin Amrin, a Diploma in Computer Technology student at Kuala Selangor Vocational College, Selangor. I have a strong passion for Information Technology, with particular interests in Web Development, Database Management, and Software Development. Through various academic and practical projects, I have gained experience in designing and developing interactive websites, applications, and digital management systems.</p>
       <p>I am a highly motivated and adaptable individual with a strong commitment to continuous learning and professional growth. Equipped with technical knowledge, problem-solving abilities, and leadership skills, I strive to develop effective digital solutions while continuously enhancing my capabilities. I look forward to gaining industry experience, embracing new challenges, and contributing positively to the field of technology.</p>
-      <dl class="facts">
-        <div><dt>Studying</dt><dd>Diploma in Computer Technology, KV Kuala Selangor (2025–2027)</dd></div>
-        <div><dt>CGPA</dt><dd>3.71</dd></div>
-        <div><dt>Based in</dt><dd>Selangor, Malaysia</dd></div>
-        <div><dt>Languages</dt><dd>Malay, English, basic Mandarin</dd></div>
-      </dl>
+      <div class="stats">
+        <div class="stat glass"><b data-n="3.71" data-d="2">0</b><small>Diploma CGPA</small></div>
+        <div class="stat glass"><b data-n="13" data-s="+">0</b><small>Tech skills</small></div>
+        <div class="stat glass"><b data-n="1" data-s="+">0</b><small>Year work experience</small></div>
+      </div>
       <div class="cta" style="margin-top:0"><a class="btn pri" id="dlResume" href="resume.pdf" download="CV_Anniq_Darwisy.pdf"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Download CV</a><button class="btn" id="viewResume"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> View Resume</button></div><p class="dlnote" id="dlnote"></p>
     </div>
   </div>
@@ -530,7 +439,8 @@ body.light::before{opacity:.12}
 
 <!-- PORTFOLIO -->
 <section class="sec" id="portfolio">
-  <div class="shead reveal"><span>02</span><h2>Work</h2></div>
+  <span class="eyebrow reveal">02 · Work</span><h2 class="reveal">Portfolio</h2>
+  <p class="subt reveal">Projects, experience, achievements and the tech I use.</p>
   <div class="tabs reveal">
     <button class="tab on" data-p="projects"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg> Projects</button>
     <button class="tab" data-p="certs"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg> Experience</button>
@@ -560,30 +470,37 @@ body.light::before{opacity:.12}
 
 <!-- CONTACT -->
 <section class="sec" id="contact">
-  <div class="shead reveal"><span>03</span><h2>Contact</h2></div>
-  <div class="cwrap">
-    <div class="cside reveal">
-      <p>The quickest way to reach me is email. I'll get back to you as soon as I can.</p>
-      <a class="cmail" href="mailto:anniqdarwisyamrin7@gmail.com">anniqdarwisyamrin7@gmail.com</a>
-      <p class="small">Or leave a message here and it will land in my inbox.</p>
-    </div>
-    <div class="cbox reveal">
+  <span class="eyebrow reveal">03 · Contact</span><h2 class="reveal">Contact Me</h2>
+  <p class="subt reveal">Have a project idea or job opportunity? Let's talk!</p>
+  <div class="cgrid">
+    <div class="cbox glass reveal">
+      <h3>Get in Touch</h3>
+      <p>Something to discuss? Send me a message and I'll reply as soon as I can.</p>
       <form id="cform">
-        <input name="name" required maxlength="100" placeholder="Name">
-        <input name="email" type="email" required maxlength="150" placeholder="Email">
-        <textarea name="message" rows="4" required maxlength="3000" placeholder="What would you like to talk about?"></textarea>
+        <input name="name" required maxlength="100" placeholder="Your name">
+        <input name="email" type="email" required maxlength="150" placeholder="Your email">
+        <textarea name="message" rows="4" required maxlength="3000" placeholder="Your message"></textarea>
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
         <button class="btn pri" id="csend" style="width:100%;justify-content:center">Send Message <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/></svg></button>
         <p class="note" id="cnote" role="status"></p>
       </form>
+    </div>
+    <div class="cbox glass reveal">
+      <div class="chead"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12z"/></svg> Comments <span id="ccount" style="color:var(--muted);font-weight:500">(0)</span></div>
+      <form id="kform">
+        <label>Name</label><input id="kname" required placeholder="Enter your name">
+        <label>Comment</label><textarea id="kmsg" rows="3" required placeholder="Write your comment here..."></textarea>
+        <button class="btn pri">Post Comment</button>
+      </form>
+      <div class="clist" id="clist"></div>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="fwrap">
-    <div class="fsay">Thanks for scrolling this far.</div>
-    <a class="fmail" href="mailto:anniqdarwisyamrin7@gmail.com">anniqdarwisyamrin7@gmail.com</a>
+    <div class="fsay">Got an idea in mind?<br>Let's <span>build it</span> together.</div>
+    <a class="fmail" href="#contact">Say hello <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="frow">
       <div class="fme"><img src="photo.jpg" alt=""><div><b>Anniq Darwisy</b><small><span class="dot"></span>Kuala Selangor, MY · <span id="clock">--:--</span></small></div></div>
       <div class="fsoc">
@@ -594,7 +511,7 @@ body.light::before{opacity:.12}
         <a href="https://www.linkedin.com/search/results/all/?keywords=ANNIQ%20DARWISY%20BIN%20AMRIN"><span class="fi" style="background:#0a66c2"><svg viewBox="0 0 24 24"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6z"/></svg></span>Anniq Darwisy</a>
       </div>
     </div>
-    <div class="fend"><span>© <span id="yr"></span> Anniq Darwisy · Designed and built in Puncak Alam</span><a href="#home">Back to top <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a></div>
+    <div class="fend"><span>© <span id="yr"></span></span><a href="#home">Back to top <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a></div>
   </div>
 </footer>
 
@@ -759,8 +676,8 @@ let C=[];
 try{const s=JSON.parse(localStorage.getItem('ad-cmt-en')||'null');if(s)C=s}catch(e){}
 function rc2(){document.getElementById('ccount').textContent=`(${C.length})`;
   document.getElementById('clist').innerHTML=C.length?'':'<p style="color:var(--muted);font-size:.85rem">No comments yet. Be the first!</p>';document.getElementById('clist').innerHTML+=C.map(c=>`<div class="cm"><div class="av">${c.n[0].toUpperCase()}</div><div><b>${c.n.replace(/</g,'&lt;')}</b><small>${c.t}</small><p>${c.m.replace(/</g,'&lt;')}</p></div></div>`).join('')}
-if(document.getElementById('clist'))rc2();
-if(document.getElementById('kform'))document.getElementById('kform').onsubmit=e=>{e.preventDefault();C.unshift({n:kname.value,m:kmsg.value,t:'just now'});try{localStorage.setItem('ad-cmt-en',JSON.stringify(C))}catch(e){}rc2();e.target.reset()};
+rc2();
+document.getElementById('kform').onsubmit=e=>{e.preventDefault();C.unshift({n:kname.value,m:kmsg.value,t:'just now'});try{localStorage.setItem('ad-cmt-en',JSON.stringify(C))}catch(e){}rc2();e.target.reset()};
 document.getElementById('yr').textContent=new Date().getFullYear();
 /* resume */
 const rm=document.getElementById('rmodal');
@@ -867,7 +784,7 @@ Contact: email anniqdarwisyamrin7@gmail.com; GitHub isymars; Instagram anniqszn;
   $('aibtn').onclick=()=>panel.classList.contains('open')?close():open();
   $('aiclose').onclick=close;tip.onclick=open;
   addEventListener('keydown',e=>{if(e.key==='Escape')close()});
-  
+  setTimeout(()=>{if(!panel.classList.contains('open'))tip.classList.add('show')},4000);
   setTimeout(()=>tip.classList.remove('show'),14000);
 
   /* ---- local brain (works anywhere, e.g. GitHub Pages) ---- */
